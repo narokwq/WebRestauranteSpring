@@ -1,0 +1,24 @@
+body{
+	width: 100%;
+    height: 100%;
+    background-color: #49274A;
+    border: 0;
+    margin: 0;
+}
+#login-box{
+    width: 500px;
+    height: 260px;
+	margin: auto;
+    border-radius: 5px;
+	position: absolute;
+  	top: 0;
+  	left: 0;
+  	bottom: 0;
+  	right: 0;
+	border:solid 1px;
+	border-radius:20px;
+}
+#login-box-interno-label{
+		text-align: center;
+		margin-top: 20px;
+}

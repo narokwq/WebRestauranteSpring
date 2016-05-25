@@ -1,0 +1,124 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin: 0 0 72px;
+
+}
+header {
+    margin-bottom: 54px;
+}
+#topo {
+    background: #49274A;
+    width: 100%;
+    height: 80px;
+    position: relative;
+    left: 0;
+    top: 0;
+    text-align: center;
+ 
+}
+#topo span{
+    position: relative;
+    color: white;
+    top: 2em;
+}
+#topofixo{
+    display:inline-block;
+    background: #94618E;
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    z-index : 1000;
+}
+.nav-link{
+    color: white;
+}
+.navbar ul li a:hover {
+    background-color: #49274A !important;
+    color: white;
+}
+.navbar ul li a:focus {
+    background-color: #49274A !important;
+}
+.active{
+  background-color:#49274A !important;
+}
+.nav-pills .nav-link.active, 
+.nav-pills .nav-link.active:focus, 
+.nav-pills .nav-link.active:hover, 
+.nav-pills .nav-item.open .nav-link, 
+.nav-pills .nav-item.open .nav-link:focus, 
+.nav-pills .nav-item.open .nav-link:hover{
+	background-color: #49274A !important;
+}
+.dropdown-item{
+    color: black;
+}
+section{
+    position: relative;
+}
+.centrodiv
+{
+    width: 800px;
+    position: relative;
+    margin:0 auto;
+    padding: 1.5rem;
+    border-width: .2rem;
+    border: solid #f7f7f9;
+}
+.centrodiv1
+{
+    width: 1200px;
+    position: relative;
+    margin:0 auto;
+    padding: 1.5rem;
+    border-width: .2rem;
+    border: solid #f7f7f9;
+}
+.icon-tb{
+	padding: 0.4px;
+	margin-right: 4px;
+	width: 20px;
+}
+table{
+	margin-bottom: 0 !important;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: auto;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+  text-align: center;
+}
+
+code {
+  font-size: 80%;
+}

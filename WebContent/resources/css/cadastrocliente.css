@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+
+#formulario-cadastro{
+	top: 500px;
+	width: 600px;
+    margin: auto;
+}
+#info-pessoal{
+	margin-top: 20px;
+}
+#endereco{
+	margin-top: 20px;
+}
+#bnt-voltar{
+	margin-left: 25px;
+}
