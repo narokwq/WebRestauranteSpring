@@ -19,12 +19,12 @@ import com.br.services.UsuarioService;
 
 //@RequestMapping(value="login")
 @Controller
-public class CardapioController {
+public class LoginController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value={"/", "login"}, method=RequestMethod.GET)
 	public String list(ModelMap map){
 		map.addAttribute("user", new Login());
 			

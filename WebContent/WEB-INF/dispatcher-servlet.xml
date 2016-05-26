@@ -71,5 +71,8 @@
     
     <bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<mvc:interceptors> 
+	       <bean class="com.br.interceptores.AutorizadorInterceptor" /> 
+	</mvc:interceptors> 
  
 </beans>
