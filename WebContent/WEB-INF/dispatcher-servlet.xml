@@ -30,18 +30,16 @@
     <context:component-scan base-package="com.br.controller,com.br.services,com.br.dao" />
     <!-- Activates various annotations to be detected in bean classes e.g: @Autowired -->
     
-    <context:annotation-config />
-    
+    <context:annotation-config />    
     <mvc:annotation-driven />
-    <mvc:default-servlet-handler />
-    
+    <mvc:default-servlet-handler />    
     <mvc:resources mapping="/resources/**" location="/resources/" />
    
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
-        <property name="url" value="jdbc:postgresql://localhost:5433/restaurante" />
+        <property name="url" value="jdbc:postgresql://localhost:5432/restaurante" />
         <property name="username" value="postgres" />
-        <property name="password" value="postgres" />
+        <property name="password" value="123456789" />
     </bean>
      
     <bean id="entityManagerFactory"
@@ -72,7 +70,8 @@
     <bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 	<mvc:interceptors> 
-	       <bean class="com.br.interceptores.AutorizadorInterceptor" /> 
+	       <bean class="com.br.interceptores.AutorizadorInterceptor" >	      
+	       </bean> 
 	</mvc:interceptors> 
  
 </beans>

@@ -47,7 +47,7 @@ public class Cliente extends Usuario{
 		this.dataNasc = dataNasc;
 	}
 	public String toString(){
-		return String.format("Nome: %s\nCliente desde: %s\nData de Nascimento: %s\n",this.dataCadastro,this.dataNasc,this.endereco );
+		return String.format("Nome: %s\nCliente desde: %s\nData de Nascimento: %s\n\t -- Endereço --\n %s",getNome(),this.dataCadastro,this.dataNasc,this.endereco );
 	}
 	public Collection<Delivery> getDeliverys() {
 		return deliverys;
