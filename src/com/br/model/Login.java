@@ -4,11 +4,15 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.persistence.Embeddable;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.br.util.HashPassword;
 
 @Embeddable
 public class Login {
+	@NotEmpty
 	private String login;
+	@NotEmpty
 	private String senha;
 	
 	public String getLogin() {

@@ -1,21 +1,21 @@
 package com.br.controller;
 
-import java.security.NoSuchAlgorithmException;
-
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.br.model.Cliente;
 import com.br.model.Funcionario;
+import com.br.model.Login;
 import com.br.model.Usuario;
 import com.br.services.UsuarioService;
-import com.sun.security.ntlm.Client;
 
 
 
@@ -27,30 +27,24 @@ public class LoginController {
 	
 	@RequestMapping(value={"/", "login"}, method=RequestMethod.GET)
 	public String login(ModelMap map){
-		Usuario usuario = new Usuario();
-		map.addAttribute("usuario", usuario);
+		map.addAttribute("login", new Login());
 		return "login";
 	}
 	
 	@RequestMapping(value="logar", method=RequestMethod.POST)
-	public String logar(@ModelAttribute("usuario") Usuario user, HttpSession sessao, ModelMap map){
-		if(user.getLogin() == null || user.getLogin().getSenha() == null ){
-			map.addAttribute("usuario", user);
+	public String logar(@Valid @ModelAttribute("login") Login user, BindingResult result, HttpSession sessao, ModelMap map){
+		if(result.hasErrors()){
 			return  "login";
 		}
 		
 		Usuario usuarioBD = null;
-		try {
-			usuarioBD = usuarioService.logar(user.getLogin());
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} 
-		
+		usuarioBD = usuarioService.logar(user);
+
 		if(usuarioBD == null){
-			user.getLogin().setSenha("");
-			map.addAttribute("usuario", user);
+			user.setSenha("");
 			return  "login";
 		}
+//		Temporario, mudar pra tabela de permissões no futuro
 		if(usuarioBD instanceof Cliente){
 			sessao.setAttribute("home", "cliente");
 		} else if (usuarioBD instanceof Funcionario) {
@@ -58,9 +52,14 @@ public class LoginController {
 		} else {
 			sessao.setAttribute("home", "gerente");
 		}
+//		Fim
 		sessao.setAttribute("usuario", usuarioBD);
 		return "redirect:/home";
 	}
 	
-	
+	@RequestMapping(value="logout", method=RequestMethod.GET)
+	public String login(HttpSession session){
+		session.invalidate();
+		return "redirect:/login";
+	}
 }

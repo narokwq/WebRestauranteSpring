@@ -1,7 +1,5 @@
 package com.br.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +14,7 @@ public class SistemaController {
 //	private UsuarioService usuarioService;
 	
 	@RequestMapping(value="home", method=RequestMethod.GET)
-	public String login(ModelMap map,HttpSession sessao){
+	public String login(ModelMap map){
 		return "home";
 	}
 	
