@@ -2,11 +2,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!-- para estruturas de controle e repetição e setar variáveis -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!-- para formatações -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!-- para funções -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,17 +18,17 @@
             <div id="login-box-interno-label">
                     <span>Controle de Restaurante</span>
             </div>
-            <form:form class="form-horizontal" action="logar" method="post" modelAttribute="usuario">
+            <form:form class="form-horizontal" action="logar" method="post" modelAttribute="login">
 				  <div class="form-group">
 				    <label class="col-sm-2 control-label">Login</label>
 				    <div class="col-sm-9">
-				      <form:input path="login.login" type="text" class="form-control" name="tLogin" placeholder="Login" required="required" />
+				      <form:input path="login" type="text" class="form-control" name="tLogin" placeholder="Login" required="required" />
 				    </div>
 				  </div>
 				  <div class="form-group" >
 				    <label  class="col-sm-2 control-label" style="margin-top: 15px;">Senha</label>
 				    <div class="col-sm-9">
-				      <form:input path="login.senha" style="margin-top: 15px;" type="password" class="form-control" name="tSenha" placeholder="Senha" required="required" />
+				      <form:password path="senha" style="margin-top: 15px;" class="form-control" name="tSenha" placeholder="Senha" required="required" />
 				    </div>
 				  </div>
 				  <div>

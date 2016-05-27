@@ -62,8 +62,12 @@ public class UsuarioService {
 			return result;
 		}
 
-		public Usuario logar(Login login) throws NoSuchAlgorithmException {
-			login.criarSenha(login.getSenha());
+		public Usuario logar(Login login){
+			try {
+				login.criarSenha(login.getSenha());
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
 			return procurarPorLoginSenha(login);
 		}
 	

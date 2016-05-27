@@ -37,9 +37,9 @@
    
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
-        <property name="url" value="jdbc:postgresql://localhost:5432/restaurante" />
+        <property name="url" value="jdbc:postgresql://localhost:5433/restaurante" />
         <property name="username" value="postgres" />
-        <property name="password" value="123456789" />
+        <property name="password" value="postgres" />
     </bean>
      
     <bean id="entityManagerFactory"
@@ -69,9 +69,13 @@
     
     <bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-	<mvc:interceptors> 
-	       <bean class="com.br.interceptores.AutorizadorInterceptor" >	      
-	       </bean> 
+	<mvc:interceptors>
+		<mvc:interceptor> 
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/resources/**"/>
+	     	<bean class="com.br.interceptores.AutorizadorInterceptor" />
+	    </mvc:interceptor> 	      
+
 	</mvc:interceptors> 
  
 </beans>

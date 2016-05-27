@@ -13,15 +13,14 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter{
 	  
        HttpSession session = request.getSession();
        String uri = request.getRequestURI(); 
-       System.out.println(uri);
-     
-       if(uri.endsWith("login") || uri.endsWith("logar") || request.getServletPath().contains("/resources/")){ 
+       String contextPath = request.getContextPath();
+       if(uri.endsWith("login") || uri.endsWith("logar")){ 
            return true; 
        } 
        if(session.getAttribute("usuario") != null) {  
          return true; 
        } 
-       response.sendRedirect("login"); 
+       response.sendRedirect(contextPath+"/login"); 
        return false; 
    } 
 }
