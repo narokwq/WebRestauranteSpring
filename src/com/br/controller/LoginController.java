@@ -1,7 +1,5 @@
 package com.br.controller;
 
-import java.security.NoSuchAlgorithmException;
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
