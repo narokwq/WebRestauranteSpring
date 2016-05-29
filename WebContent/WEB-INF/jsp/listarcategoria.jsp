@@ -8,7 +8,8 @@
 <%@ include file="header.jsp" %>
 	<section>
 		<div class="centrodiv">
-			<form:form action="/cardapio/listar" modelAttribute="filtro">
+			<c:url var="url" value="/categoria/filtrar" />
+			<form:form action="${url}" modelAttribute="filtro" method="GET">
 				<div class="form-group row">
 
 						<label for="inputNome" class="col-sm-1 form-control-label">Nome</label>
@@ -45,8 +46,8 @@
 							Desativado
 					</c:if>
 					</td>
-					<td>
-						<a href="desativarCategoria?id=${categoria.id}"><img src="<c:url value="/resources/image/switch.png" />" class="icon-tb"></a> 
+					<td>				
+						<a href='<c:url value="/categoria/${categoria.id}/form" />'><img src="<c:url value="/resources/image/switch.png" />" class="icon-tb"></a> 
 					</td>
 	
 	            </tr>
@@ -71,5 +72,6 @@
 	
 <%@ include file="footer.jsp" %>
 <script src="js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/bootstrap.js" />" ></script>
 </body>
 </html>

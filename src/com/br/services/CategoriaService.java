@@ -31,7 +31,7 @@ public class CategoriaService {
 		categoriaDAO.update(categoria);
 	}
 
-	public  void desativar(Categoria cat) {
+	public void desativar(Categoria cat) {
 		Categoria categoria = procurar(cat);
 		categoria.setStatus(!categoria.isStatus());
 		atualizar(categoria);
@@ -47,6 +47,7 @@ public class CategoriaService {
 	public  List<Categoria> listar(){
 		List<Categoria> result = Collections.emptyList();
 		result = categoriaDAO.getAll();
+		Collections.sort(result);
 		
 		return result;
 	}

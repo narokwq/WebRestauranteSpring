@@ -8,7 +8,7 @@
 <%@ include file="header.jsp" %>
     <section>
         <div class="centrodiv">
-        	<c:url var="url" value="/categoria/form" />
+        	<c:url var="url" value="/categoria/save" />
             <form:form action="${url}" method="post" modelAttribute="categoria">
             	<form:hidden path="id" />
                 <div class="form-group row">

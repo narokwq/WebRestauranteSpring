@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Categoria")
-public class Categoria implements EntityClass{
+public class Categoria implements EntityClass, Comparable<Categoria>{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -37,6 +37,12 @@ public class Categoria implements EntityClass{
 	}
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+	
+	@Override
+	public int compareTo(Categoria o) {
+//		return status ? -1:1;
+		return this.id > o.getId() ? 1 : -1;
 	}
 
 	

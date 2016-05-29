@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,22 +34,39 @@ public class CategoriaController {
 	
 	@RequestMapping(value={"form"}, method=RequestMethod.GET)
 	public String login(ModelMap map){
-
-		Map<String, String> status = new HashMap<String,String>();  
-		status.put("true", "Ativo");  
-		status.put("false", "Desativado");
-		map.addAttribute("statusItens", status);
+		map.addAttribute("statusItens");
 		map.addAttribute("categoria", new Categoria());
 		return "cadastrocategoria";
 	}
 	
-//	@ModelAttribute(value="selectStatus")
-//	public Map<Boolean, String > selectStatus(ModelMap map){
-//		
-//		Map<Boolean, String> status = new HashMap<>();  
-//		status.put(true, "Ativo");  
-//		status.put(false, "Desativado");  
-//		return status;
-//	}
+	@RequestMapping(method=RequestMethod.GET, value="{id}/form")
+	public String updateForm(@PathVariable Long id, ModelMap map){
+		categoriaService.desativar(new Categoria(id));
+		return "redirect:/categoria/listar";
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="save")
+	public String save(@ModelAttribute("categoria") Categoria categoria){
+		categoriaService.criar(categoria);	
+		return "redirect:/categoria/listar";
+	}
+	
+	@RequestMapping(value="filtrar", method=RequestMethod.GET)
+	public String filtrar(@ModelAttribute("filtro") Categoria filtro, ModelMap map){
+		
+		List<Categoria> categorias = categoriaService.buscarFiltro(filtro);
+		map.addAttribute("categorias", categorias);
+		map.addAttribute("filtro", filtro);
+		return "listarcategoria";
+	}
+	
+	@ModelAttribute(value="statusItens")
+	public Map<Boolean, String > selectStatus(ModelMap map){
+		
+		Map<Boolean, String> status = new HashMap<>();  
+		status.put(true, "Ativo"); 
+		status.put(false, "Desativado"); 	 		 
+		return status;
+	}
 
 }
