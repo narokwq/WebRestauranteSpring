@@ -13,7 +13,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
                     <a class="dropdown-item" href="<c:url value="/categoria/form" />">Cadastrar</a>
-                    <a class="dropdown-item" href="listarCategoria">Listar</a>
+                    <a class="dropdown-item" href="<c:url value="/categoria/listar" />">Listar</a>
                    
                 </div>
             </li>

@@ -1,6 +1,7 @@
 package com.br.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,15 @@ public class CategoriaController {
 	
 	@Autowired
 	private CategoriaService categoriaService;
+	
+	@RequestMapping(value="listar", method=RequestMethod.GET)
+	public String list(ModelMap map){
+		
+		List<Categoria> categorias = categoriaService.listar();
+		map.addAttribute("categorias", categorias);
+		map.addAttribute("filtro", new Categoria());
+		return "listarcategoria";
+	}
 	
 	@RequestMapping(value={"form"}, method=RequestMethod.GET)
 	public String login(ModelMap map){
