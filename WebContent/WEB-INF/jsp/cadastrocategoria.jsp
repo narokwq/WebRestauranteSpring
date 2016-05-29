@@ -1,27 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <%@ include file="header.jsp" %>
     <section>
         <div class="centrodiv">
-            <form action="cadastroCategoria" method="post">
-            	<input type='hidden' name='id' value="${categoria.id}" />
+        	<c:url var="url" value="/categoria/form" />
+            <form:form action="${url}" method="post" modelAttribute="categoria">
+            	<form:hidden path="id" />
                 <div class="form-group row">
                     <label for="inputNome" class="col-sm-2 form-control-label">Nome</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome" required="required" value="${categoria.nome}">
+                        <form:input class="form-control" id="inputNome" placeholder="Nome" name="nome" required="required" path="nome" />
                     </div>
                     <label for="inputCategoria" class="col-sm-2 form-control-label">Status</label>
                     <div class="col-sm-4">
-                        <select class="form-control" id="inputCategoria" name="status">
-                            <option value="0" <c:if test="${categoria.status == true}">Selected</c:if>
-                            >Ativo</option>
-                            <option value="1" <c:if test="${categoria.status == false}">Selected</c:if>
-                            >Desativado</option>
-                        </select>
+                        <form:select  path="status" class="form-control">
+                        	<form:options items="${statusItens}" />
+                        </form:select>
                     </div>
                     
                 </div>
@@ -30,12 +29,12 @@
                         <button type="submit" class="btn btn-secondary">Cadastrar</button>
                     </div>
                 </div>
-            </form>
+           </form:form>
         </div>
     </section>
 
 <%@ include file="footer.jsp" %>
-<script src="js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/bootstrap.js" />" ></script>
 </body>
 </body>
 </html>

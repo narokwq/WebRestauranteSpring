@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="resources/css/bootstrap4.css">
-    <link rel="stylesheet" href="resources/css/mycss.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/cadastrocliente.css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap4.css" />">
+    <link rel="stylesheet" href="<c:url value="/resources/css/mycss.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/cadastrocliente.css" />">
 
-	 <script  type="text/javascript" src="resources/js/mascaras.js" ></script>
-    <script type="text/javascript" src="resources/js/jquery-2.2.3.min.js"></script>
+	 <script  type="text/javascript" src="<c:url value="/resources/js/mascaras.js" />" ></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.2.4.js" />"></script>
     <script type="text/javascript">
         $(window).scroll(function(){
             if ($(window).scrollTop() >= 80)

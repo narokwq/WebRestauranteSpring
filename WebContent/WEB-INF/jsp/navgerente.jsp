@@ -4,14 +4,14 @@
     <nav class="navbar" id="topofixo">
         <ul class="nav navbar-nav nav-pills">
             <li class="nav-item">
-                <a class="nav-link" href="LoginSistema">Home</a>
+                <a class="nav-link" href="<c:url value="/home" />">Home</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     Categoria
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
-                    <a class="dropdown-item" href="cadastroCategoria">Cadastrar</a>
+                    <a class="dropdown-item" href="<c:url value="/categoria/form" />">Cadastrar</a>
                     <a class="dropdown-item" href="listarCategoria">Listar</a>
                    
                 </div>
