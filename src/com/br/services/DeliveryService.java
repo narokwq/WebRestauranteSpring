@@ -13,6 +13,7 @@ import com.br.dao.DeliveryDAO;
 import com.br.dao.ItemCardapioDAO;
 import com.br.model.Delivery;
 import com.br.model.ItemCardapio;
+import com.br.model.Usuario;
 
 @Service
 @Transactional
@@ -67,9 +68,9 @@ public class DeliveryService {
 		return result;
 	}
 	
-	public List<Delivery> procurarPorClienteId(Long id) {
+	public List<Delivery> procurarPorClienteId(Usuario usuario) {
 		List<Delivery> result = null;
-		result = deliveryDAO.procurarPorClienteId(id);
+		result = deliveryDAO.procurarPorClienteId(usuario);
 
 		return result;
 	}

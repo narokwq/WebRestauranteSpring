@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import com.br.model.Delivery;
+import com.br.model.Usuario;
 
 @Repository
 public class DeliveryDAO extends GenericDAO<Delivery>{
@@ -30,11 +31,11 @@ public class DeliveryDAO extends GenericDAO<Delivery>{
 		return lista;
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Delivery> procurarPorClienteId(Long id) {
+
+	public List<Delivery> procurarPorClienteId(Usuario usuario) {
 		Query result = null;
-		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.cliente.id = :id and d.desativado = :desativado").setParameter("id", id).setParameter("desativado", false);
-		return (List<Delivery>) result.getResultList();
+		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.cliente.id = :id and d.desativado = :desativado").setParameter("id", usuario.getId()).setParameter("desativado", false);
+		return result.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")

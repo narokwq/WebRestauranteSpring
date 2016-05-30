@@ -1,33 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <%@ include file="header.jsp" %>
 	<section>
 		<div class="centrodiv">
-			<form action="listarDelivery">
+			<c:url var="url" value="/delivery/filtrar" />
+			<form:form action="${url}" modelAttribute="filtro" method="get" >
 				<div class="form-group row">
 				
 						<label for="inputNumero" class="col-sm-3 form-control-label">Numero do Pedido</label>
 	                    <div class="col-sm-2">
-	                        <input type="number" class="form-control" id="inputNumero" placeholder="000" name="numero">
+	                        <form:input type="number" class="form-control" id="inputNumero" placeholder="000" path="id" />
 	                    </div>
 	                    <label for="inputStatus" class="col-sm-1 form-control-label">Status</label>
 	                   	<div class="col-sm-3" >
-	                         <select id="inputStatus"  name="status" class="form-control" >
+	                         <form:select path="status" id="inputStatus" class="form-control" >
 	                         			<option  value="Todos" selected="selected" >Todos</option>
 			                        	<option  value="Pendente" >Pendente</option>
 			                        	<option  value="Atendido" >Atendido</option>
 			                        	<option  value="Cancelado" >Cancelado</option>
-	                    	 </select>
+	                    	 </form:select>
 	                    </div>
 	                    <div class="col-sm-offset-0 col-sm-2" >
 	                        <button style="float:right;" type="submit" class="btn btn-secondary">Pesquisar</button>
 	                    </div>
 				</div>
-			</form>
+			</form:form>
 			<div class="form-group row">
 	 		<table class="table table-sm">
 	            <thead>
@@ -36,7 +38,7 @@
 	                <th>Data</th>
 	                <th>Total</th>
 	                <th>Status</th>
-	                <th>Ações</th>
+	                <th>AÃ§Ãµes</th>
 	            </tr>
 	            </thead>
 	            <tbody>
@@ -48,8 +50,8 @@
 					<td><fmt:formatNumber type="currency" currencySymbol="R$ " value="${delivery.total}" /></td>
 					<td>${delivery.status}</td>
 					<td>
-						<a href="detalharDeliveryCliente?id=${delivery.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> 
-						<a href="removerDelivery?id=${delivery.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a>
+						<a href="<c:url value="/delivery/{delivery.id}/detalhado" />" title="detalhar"><img src="<c:url value="/resources/image/detalhe.png" />" class="icon-tb"></a> 
+						<a href="<c:url value="/delivery/{delivery.id}/remover" />" title="remover"><img src="<c:url value="/resources/image/delete.png" />" class="icon-tb"></a>
 					</td>
 	
 	            </tr>
@@ -73,6 +75,6 @@
 			</c:if>	
 	</section>
 <%@ include file="footer.jsp" %>
-<script src="js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/bootstrap.js" />" ></script>
 </body>
 </html>

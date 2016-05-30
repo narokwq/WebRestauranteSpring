@@ -26,17 +26,18 @@ public class CardapioDAO extends GenericDAO<Cardapio>{
 	@SuppressWarnings("unchecked")
 	public List<Cardapio> buscar(Cardapio filtro){
 		String str = "select c from Cardapio c where upper(nome) like upper(:nome)";
+		Long id = filtro.getCategoria().getId();
 		if(filtro.getNome() == null){
 			filtro.setNome("");
 		}
-		if(filtro.getCategoria().getId() != null){
+		if(id != null && id != 0){
 			str+=" and c.categoria.id = :categoria";
 		}
 		Query query=manager.createQuery(str);   
 		
 		query.setParameter("nome", "%"+filtro.getNome()+"%");
 		
-		if(filtro.getCategoria().getId() != null){
+		if(id != null && id != 0){
 			query.setParameter("categoria", filtro.getCategoria().getId());
 		}
 		return query.getResultList();

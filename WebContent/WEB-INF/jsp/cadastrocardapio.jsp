@@ -1,36 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <%@ include file="header.jsp" %>
     <section>
         <div class="centrodiv">
-            <form action="cadastroCardapio" method="post">
-            	<input type='hidden' name='id' value="${cardapio.id}" />
+        	<c:url var="url" value="/cardapio/save" />
+            <form:form action="${url}" method="post" modelAttribute="cardapio" >
+            	<form:hidden name='id' path="id" />
                 <div class="form-group row">
                     <label for="inputNome" class="col-sm-2 form-control-label">Nome</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome" value="${cardapio.nome}" required>
+                        <form:input class="form-control" id="inputNome" placeholder="Nome" path="nome" required="required" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputPreco" class="col-sm-2 form-control-label" >Preço</label>
+                    <label for="inputPreco" class="col-sm-2 form-control-label" >PreÃ§o</label>
                     <div class="col-sm-4">
-                        <input type="number" step="0.01" min=0 class="form-control" id="inputPreco" placeholder="0.00" name="preco" value="${cardapio.preco}"required>
+                        <form:input type="number" step="0.01" min="0" class="form-control" id="inputPreco" placeholder="0.00" required="required" path="preco" />
                     </div>
                     <label for="inputCategoria" class="col-sm-2 form-control-label">Categoria</label>
                     <div class="col-sm-4">
                        		
-                            <select id="inputReserva"  name="opcao" class="form-control" >
-                            	<c:if test="${cardapio.categoria.status == false}">
-                            		<option  value="${cardapio.categoria.id}" selected> ${cardapio.categoria.nome}</option> 
-                            	</c:if>
-	                         			<c:forEach var="categoria" items="${categorias}">
-	                         				<option  value="${categoria.id}"  <c:if test="${categoria.nome == cardapio.categoria.nome}">selected </c:if>>${categoria.nome}</option>
-	                         			</c:forEach>			                        
-	                    	 </select>
+                            <form:select id="inputReserva" class="form-control" path="categoria.id" >
+                            	<form:options items="${categoriaItens}" />
+                            </form:select>			                        
                       
                     </div>
                 </div>
@@ -39,12 +36,12 @@
                         <button type="submit" class="btn btn-secondary">Cadastrar</button>
                     </div>
                 </div>
-            </form>
+            </form:form>
         </div>
     </section>
 
 <%@ include file="footer.jsp" %>
-<script src="js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/bootstrap.js" />" ></script>
 </body>
 </body>
 </html>

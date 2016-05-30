@@ -45,6 +45,11 @@ public class Pedido implements EntityClass{
 		itemCardapio.setPedido(this);
 		itensCardapio.add(itemCardapio);
 	}
+	
+	public void addItemCardapio(ItemCardapio item){
+		itensCardapio.add(item);
+	}
+	
 	public float getTotal(){		// Padrao Expert
 		float totalResult = 0;
 		for (ItemCardapio itemCardapio : itensCardapio) {

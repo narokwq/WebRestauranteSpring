@@ -1,44 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
     
 <%@ include file="header.jsp" %>
 
 	<section>
 		<div class="centrodiv">
-		<form action="listarCardapio">
+		<c:url var="url" value="/cardapio/filtrar"/>
+		<form:form action="${url}" modelAttribute="filtro" method="get">
 				<div class="form-group row">
 
 						<label for="inputNome" class="col-sm-1 form-control-label">Nome</label>
 	                    <div class="col-sm-3">
-	                        <input type="text" class="form-control" id="inputNome" name="filtroNome">
+	                        <form:input class="form-control" id="inputNome" path="nome" />
 	                    </div>
 	                    <label for="inputCategoria" class="col-sm-2 form-control-label">Categoria</label>
 	                   	<div class="col-sm-3" >
-	                         <select id="inputCategoria"  name="filtroCategoria" class="form-control" >
-	                         			<option  value="0" >Todos</option>
-	                         			<c:forEach var="categoria" items="${categorias}">
-	                         				<option  value="${categoria.id }" >${categoria.nome}</option>
-	                         			</c:forEach>			                        
-	                    	 </select>
+	                         <form:select id="inputReserva" class="form-control" path="categoria.id" >
+	                         	<form:option value="0">Todos</form:option>
+                            	<form:options items="${categoriaItens}" />
+                            </form:select>	
 	                    </div>
 	                    <div class="col-sm-offset-0 col-sm-2" >
 	                        <button style="float:right;" type="submit" class="btn btn-secondary">Pesquisar</button>
 	                    </div>
 	              
 				</div>
-			</form>
+			</form:form>
 	 		<table class="table table-sm">
 	            <thead>
 	            <tr>
 	                <th>Codigo</th>
-	                <th>Descrição</th>
-	                <th>Preço</th>
+	                <th>DescriÃ§Ã£o</th>
+	                <th>PreÃ§o</th>
 	                <th>Status</th>
 	                <th>Categoria</th>
-	                <th>Ações</th>
+	                <th>AÃ§Ãµes</th>
 	            </tr>
 	            </thead>
 	            <tbody>
@@ -54,8 +54,8 @@
 	                </td>
 					<td>${cardapio.categoria.nome}</td>
 					<td>
-						<a href="cadastroCardapio?id=${cardapio.id}"><img src="image/edit.png" class="icon-tb"></a> 
-						<a href="removerCardapio?id=${cardapio.id}"><img src="image/switch.png" class="icon-tb"></a>
+						<a href="<c:url value="/cardapio/${cardapio.id}/form" />"><img src="<c:url value="/resources/image/edit.png" />" class="icon-tb"></a> 
+						<a href="<c:url value="/cardapio/${cardapio.id}/remove" />"><img src="<c:url value="/resources/image/switch.png" />" class="icon-tb"></a>
 					</td>
 	
 	            </tr>
@@ -79,6 +79,6 @@
 	</section>
 	
 <%@ include file="footer.jsp" %>
-<script src="js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/bootstrap.js" />" ></script>
 </body>
 </html>

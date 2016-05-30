@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity(name="Cardapio")
 public class Cardapio implements EntityClass{
 	
@@ -15,10 +17,11 @@ public class Cardapio implements EntityClass{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	@NotEmpty
 	private String nome;
 	private float preco;
 	private boolean status;
-	
+
 	@ManyToOne
 	@JoinColumn(name="categoria_id")
 	private Categoria categoria;
@@ -60,6 +63,11 @@ public class Cardapio implements EntityClass{
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	
+	public boolean hasValidId(){
+		return getId() != null && getId() != 0;
+	}
+	
 	@Override
 	public String toString() {
 		return "Cardapio [nome=" + nome + ", preco=" + preco + "]";

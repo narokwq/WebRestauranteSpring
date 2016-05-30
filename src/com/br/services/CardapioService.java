@@ -22,7 +22,7 @@ public class CardapioService {
 		if(cardapio.getCategoria() == null){
 			throw new Exception("Cardapio sem categoria");
 		}
-	
+		cardapio.setStatus(true);
 		cardapioDAO.insert(cardapio);
 	}
 	
