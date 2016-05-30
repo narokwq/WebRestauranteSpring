@@ -1,6 +1,7 @@
 package com.br.controller;
 
 import java.text.NumberFormat;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.br.model.Cardapio;
+import com.br.model.Categoria;
 import com.br.model.Cliente;
 import com.br.model.Delivery;
 import com.br.model.ItemCardapio;
@@ -40,7 +42,7 @@ public class DeliveryController {
 	public String list(ModelMap map, HttpSession session){
 		
 		List<Delivery> deliverys = deliveryService.procurarPorClienteId((Usuario)session.getAttribute("usuario"));
-		
+		Collections.sort(deliverys);
 		map.addAttribute("deliverys", deliverys);
 		map.addAttribute("filtro", new Delivery());
 		
@@ -55,6 +57,16 @@ public class DeliveryController {
 		map.addAttribute("delivery", delivery);
 		
 		return "detalhardeliverycliente";
+	}
+	
+	@RequestMapping(value="filtrar", method=RequestMethod.GET)
+	public String filtrar(@ModelAttribute("filtro") Delivery filtro, ModelMap map, HttpSession session){
+		filtro.setCliente((Cliente)session.getAttribute("usuario"));
+		List<Delivery> deliverys = deliveryService.buscarFiltro(filtro);
+		Collections.sort(deliverys);
+		map.addAttribute("deliverys", deliverys);
+		map.addAttribute("filtro", filtro);
+		return "listardelivery";
 	}
 	
 	@RequestMapping(value={"form"}, method=RequestMethod.GET)
@@ -89,6 +101,16 @@ public class DeliveryController {
 		
 		setItensSession(session, delivery);
 		return "redirect:/delivery/form";
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="{id}/cancelar")
+	public String cancelarDelivery(@PathVariable Long id, ModelMap map) throws Exception{
+		Delivery delivery = deliveryService.procurar(new Delivery(id));
+		if(delivery.getStatus().equals("Pendente")){
+			delivery.setStatus("Cancelado");
+			deliveryService.atualizar(delivery);
+		}
+		return "redirect:/delivery/listar";
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="save")

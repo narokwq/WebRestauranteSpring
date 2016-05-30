@@ -54,10 +54,10 @@ public class DeliveryDAO extends GenericDAO<Delivery>{
 	public List<Delivery> buscarFiltro(Delivery filtro){
 		String str = "select d from Delivery d where d.cliente.id = :id and d.desativado = :desativado";
 		
-		if(filtro.getId() != null){
+		if(filtro.getId() != null && filtro.getId() > 0){
 			str+= " and d.id = :idDelivery";
 		}
-		if(filtro.getStatus() != null && !filtro.getStatus().equals("")){
+		if(filtro.getStatus() != null && !filtro.getStatus().equals("Todos")){
 			str+= " and d.status = :status";
 		}
 		
@@ -66,10 +66,10 @@ public class DeliveryDAO extends GenericDAO<Delivery>{
 		query.setParameter("id", filtro.getCliente().getId());
 		query.setParameter("desativado", filtro.isDesativado());
 		
-		if(filtro.getStatus() != null && !filtro.getStatus().equals("")){
+		if(filtro.getStatus() != null && !filtro.getStatus().equals("Todos")){
 			query.setParameter("status", filtro.getStatus());
 		}
-		if(filtro.getId() != null){
+		if(filtro.getId() != null && filtro.getId() > 0){
 			query.setParameter("idDelivery", filtro.getId());
 		}
 		return query.getResultList();
