@@ -28,7 +28,9 @@ public class DeliveryService {
 //		EntityManager  manager =  JPAUtil.getEntityManager();
 		if(delivery.getCliente() == null ){
 			throw new Exception("Delivery sem cliente");
-		}			
+		}	
+		delivery.setData(new Date());
+		delivery.setStatus("Pendente");
 		deliveryDAO.insert(delivery);	// Primeiro tinha que inserir o delivery para o itemCardapio setar o id do pedido
 			
 		for(ItemCardapio itemCardapio:delivery.getItensCardapio()){

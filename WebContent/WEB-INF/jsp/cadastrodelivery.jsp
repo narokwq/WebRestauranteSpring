@@ -45,7 +45,7 @@
 		            	<td>${item.qtd}</td>
 		            	<td><fmt:formatNumber type="currency" currencySymbol="R$ " value="${item.qtd*item.cardapio.preco}"/></td>
 		            	<c:set var="test" value="${test += item.qtd*item.cardapio.preco}" scope="application" />
-		                <td><a href="removerItemCardapioDelivery?id=${item.cardapio.id}"><img src="image/delete.png" class="icon-tb"></a></td>	               
+		                <td><a href="<c:url value="/delivery/${item.cardapio.id}/remove" />"><img src="<c:url value="/resources/image/delete.png" />" class="icon-tb"></a></td>	               
 		            </tr>
 				</c:forEach>
 					<tr>
@@ -56,8 +56,8 @@
 	            </tbody>
 	        </table>               	
         </div>
-       
-         <form action="cadastroDelivery" style="width: 800px;position: relative;margin:0 auto;padding: 1.5rem;">
+       		<c:url var="url" value="/delivery/save" />
+         	<form:form action="${url}" class="troco-form" style="width: 800px;position: relative;margin:0 auto;padding: 1.5rem;">
                  <div class="form-group row" style="margin-top: 30px;">
                 
                 	<div class="col-sm-3" >
@@ -66,7 +66,8 @@
                     <div class="form-group">
 	                    <label class="col-sm-2 control-label">Troco para</label>
 	                    <div class="col-sm-3">
-	                        <input type="number" min=0 step=0.01  class="form-control" placeholder="R$100.00" name="pagamento" required="required" >
+	                    	<input type="number" class="form-control" min="0" step="0.01" placeholder="R$100.00" name="pagamento" required="required" />
+	                        <span class="erro-mensage" style="color:red;"></span>
 	                    </div>
 	                  	<div class="col-sm-offset-2 col-sm-2" >
 	                        <button style="float:right;" type="submit" class="btn btn-secondary">Confirmar Pedido</button>
@@ -75,7 +76,7 @@
                         
                     
                 </div>
-              </form>
+          	</form:form>
         		<c:if test="${mensagem != null}">	
 				<div class="alert alert-success" role="alert" style="margin:auto; width: 50%;">
   					${mensagem}.

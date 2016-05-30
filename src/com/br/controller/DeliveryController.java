@@ -10,13 +10,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.br.model.Cardapio;
+import com.br.model.Cliente;
 import com.br.model.Delivery;
 import com.br.model.ItemCardapio;
 import com.br.model.ParamItem;
@@ -44,6 +45,16 @@ public class DeliveryController {
 		map.addAttribute("filtro", new Delivery());
 		
 		return "listardelivery";
+	}
+	
+	@RequestMapping(value="{id}/detalhado", method=RequestMethod.GET)
+	public String detalhar(@PathVariable Long id, ModelMap map, HttpSession session){
+		
+		Delivery delivery = deliveryService.procurar(new Delivery(id));
+		
+		map.addAttribute("delivery", delivery);
+		
+		return "detalhardeliverycliente";
 	}
 	
 	@RequestMapping(value={"form"}, method=RequestMethod.GET)
@@ -77,29 +88,27 @@ public class DeliveryController {
 		}
 		
 		setItensSession(session, delivery);
-		return "redirect:/cardapio/listar";
+		return "redirect:/delivery/form";
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="save")
-	public String save(@ModelAttribute("cardapio") Cardapio cardapio, BindingResult result) throws Exception{
-		if(cardapio.hasValidId()){
-			cardapioService.atualizar(cardapio);
+	public String save(@RequestParam("pagamento") Float troco, HttpSession session) throws Exception{
+		
+		Delivery delivery = getItensSession(session);
+		if(troco < delivery.getTotal()){
+			return "redirect:/delivery/form";
 		}
-		else{
-			cardapioService.criar(cardapio);
-		}	
-		return "redirect:/cardapio/listar";
+		if(!delivery.getItensCardapio().isEmpty()){
+			delivery.setCliente((Cliente)session.getAttribute("usuario"));
+			delivery.setTroco(troco-delivery.getTotal());
+			deliveryService.criar(delivery);
+			setItensSession(session, new Delivery());
+		}
+		
+		
+		return "redirect:/delivery/listar";
 	}
 	
-	@RequestMapping(value="filtrar", method=RequestMethod.GET)
-	public String filtrar(@ModelAttribute("filtro") Cardapio filtro, ModelMap map){
-		
-		List<Cardapio> cardapios = cardapioService.buscarFiltro(filtro);
-		map.addAttribute("cardapios", cardapios);
-		map.addAttribute("filtro", filtro);
-		map.addAttribute("categoriaItens");
-		return "listarcardapio";
-	}
 	
 	@ModelAttribute(value="cardapioItens")
 	public Map<Long, String > selectCategoriaAtivado(){
@@ -112,6 +121,9 @@ public class DeliveryController {
 	 		 
 		return cardapios;
 	}
+	
+	
+//	Manipulando Delivery na Sessao
 	
 	private void addItem(HttpSession session, ItemCardapio item){
 		Delivery delivery = getItensSession(session);

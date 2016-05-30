@@ -50,8 +50,8 @@
 					<td><fmt:formatNumber type="currency" currencySymbol="R$ " value="${delivery.total}" /></td>
 					<td>${delivery.status}</td>
 					<td>
-						<a href="<c:url value="/delivery/{delivery.id}/detalhado" />" title="detalhar"><img src="<c:url value="/resources/image/detalhe.png" />" class="icon-tb"></a> 
-						<a href="<c:url value="/delivery/{delivery.id}/remover" />" title="remover"><img src="<c:url value="/resources/image/delete.png" />" class="icon-tb"></a>
+						<a href="<c:url value="/delivery/${delivery.id}/detalhado" />" title="detalhar"><img src="<c:url value="/resources/image/detalhe.png" />" class="icon-tb"></a> 
+						<a href="<c:url value="/delivery/${delivery.id}/delete" />" title="remover"><img src="<c:url value="/resources/image/delete.png" />" class="icon-tb"></a>
 					</td>
 	
 	            </tr>

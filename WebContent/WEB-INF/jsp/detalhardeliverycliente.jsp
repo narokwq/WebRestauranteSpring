@@ -16,7 +16,7 @@
 	            </tr>
 	            </thead>
 	            <tbody>
-	            	<c:forEach var="item" items="${itens}">
+	            	<c:forEach var="item" items="${delivery.itensCardapio}">
 	            	<tr>
 		            	<td>${item.cardapio.nome}</td>
 		            	<td>${item.qtd}</td>
