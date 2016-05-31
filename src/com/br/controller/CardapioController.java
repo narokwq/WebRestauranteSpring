@@ -88,9 +88,7 @@ public class CardapioController {
 
 		for (Categoria categoria : categoriaService.listarAtivo()) {
 			categorias.put(categoria.getId(), categoria.getNome());
-		}
-		
-	 		 
+		}	 		 
 		return categorias;
 	}
 	

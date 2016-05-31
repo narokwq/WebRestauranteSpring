@@ -60,7 +60,9 @@ public class Mesa implements EntityClass{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+	public boolean hasValidId(){
+		return getId() != null && getId() != 0;
+	}
 	
 
 }

@@ -15,11 +15,13 @@
                     <a class="dropdown-item" href="<c:url value="/delivery/form" />">Fazer Pedido</a>
                     <a class="dropdown-item" href="<c:url value="/delivery/listar" />">Meus Pedidos</a>
                 </div>
-            </li>
+            </li>            
             <li class="nav-item pull-xs-right">
 	        	<a class="nav-link" href="<c:url value="/logout" />">Logout</a>
 	        </li>
-	       
+	       <li class="nav-item pull-xs-right">
+            <a href="#" class="nav-link dropdown-item" role="button" aria-haspopup="true" aria-expanded="false" style="color:white;">Notificações <span style="color:white;" class="badge">1</span></a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     Meu Cadastro

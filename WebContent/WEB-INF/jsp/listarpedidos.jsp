@@ -60,23 +60,6 @@
 					<td>${pedidos.status}</td>
 					
 					<td>
-						<c:if test="${pedidos.funcionario == null }">
-							<c:out value="${pedidos.cliente.nome}"></c:out>
-						</c:if>
-						<c:if test="${pedidos.funcionario != null }">
-							<c:out value=""></c:out>
-						</c:if>
-					</td>					
-					<td>${pedidos.funcionario.nome}</td>
-					<td>
-						<c:if test="${pedidos.funcionario == null }">
-							<c:out value="Delivery"></c:out>
-						</c:if>
-						<c:if test="${pedidos.funcionario != null }">
-							<c:out value="Tradicional"></c:out>
-						</c:if>
-					</td>
-					<td>
 						<a href="detalharDeliveryCliente?id=${pedidos.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> 
 						<a href="#" title="alterar"><img src="image/edit.png" class="icon-tb"></a>
 					</td>

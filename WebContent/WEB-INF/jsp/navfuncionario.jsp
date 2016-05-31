@@ -22,8 +22,8 @@
                     Cardapio
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
-                    <a class="dropdown-item" href="cadastroCardapio">Cadastrar</a>
-                    <a class="dropdown-item" href="listarCardapio">Listar</a>
+                    <a class="dropdown-item" href="<c:url value="/cardapio/form" />">Cadastrar</a>
+                    <a class="dropdown-item" href="<c:url value="/cardapio/listar" />">Listar</a>
                    
                 </div>
             </li>
@@ -32,8 +32,8 @@
                     Mesa
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
-                    <a class="dropdown-item" href="cadastroMesa">Cadastrar</a>
-                    <a class="dropdown-item" href="listarMesa">Listar</a>
+                    <a class="dropdown-item" href="<c:url value="/mesa/form" />">Cadastrar</a>
+                    <a class="dropdown-item" href="<c:url value="/mesa/listar" />">Listar</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -48,7 +48,7 @@
                 <a class="nav-link" href="listarFuncionario">Funcionario</a>
             </li>  
             <li class="nav-item pull-xs-right">
-	        	<a class="nav-link" href="logout">Logout</a>
+	        	<a class="nav-link" href="<c:url value="/logout" />">Logout</a>
 	        </li>       
             <li class="nav-item pull-xs-right">
                 <a class="nav-link" href="#">Meu Cadastro</a>

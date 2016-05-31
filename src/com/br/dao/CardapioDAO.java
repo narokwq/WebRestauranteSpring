@@ -43,6 +43,7 @@ public class CardapioDAO extends GenericDAO<Cardapio>{
 		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Cardapio> getAllAtivo() {
 		String str = "select c from Cardapio c where c.status = :status";
 		Query query=manager.createQuery(str);   

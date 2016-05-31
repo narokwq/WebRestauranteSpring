@@ -1,13 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
     
 <%@ include file="header.jsp" %>
 	<section>
 		<div class="centrodiv">
-		<form action="listarMesa">
+		<c:url var="url" value="/mesa/filtrar"/>
+		<form:form action="${url}" modelAttribute="filtro" method="get">
 				<div class="form-group row">
 
 						<label for="inputNome" class="col-sm-1 form-control-label">Nome</label>
@@ -19,7 +21,7 @@
 	                         <select id="inputReserva"  name="opcao" class="form-control" >
 	                         			<option  value="-1" >Todas</option>
 			                        	<option  value="0" >Sim</option>
-			                        	<option  value="1" >Não</option>
+			                        	<option  value="1" >NÃ£o</option>
 			                        
 	                    	 </select>
 	                    </div>
@@ -28,15 +30,15 @@
 	                    </div>
 	              
 				</div>
-			</form>
+			</form:form>
 	 		<table class="table table-sm">
 	            <thead>
 	            <tr>
 	                <th>Numero</th>
-	                <th>Descrição</th>
+	                <th>DescriÃ§Ã£o</th>
 	                <th>Capacidade</th>
 	                <th>Resevavel</th>
-	                <th>Ações</th>
+	                <th>AÃ§Ãµes</th>
 	            </tr>
 	            </thead>
 	            <tbody>
@@ -52,12 +54,12 @@
 							Sim
 					</c:if>
 					<c:if test="${mesa.perReserva eq false}">
-							Não
+							NÃ£o
 					</c:if>
 					</td>
 					<td>
-						<a href="cadastroMesa?id=${mesa.id}"><img src="image/edit.png" class="icon-tb"></a> 
-						<a href="removerMesa?id=${mesa.id}"><img src="image/delete.png" class="icon-tb"></a>
+						<a href="<c:url value="/mesa/${mesa.id}/form" />"><img src="<c:url value="../resources/image/edit.png" />" class="icon-tb"></a> 
+						<a href="/mesa/${mesa.id}/form"><img src="<c:url value="../resources/image/delete.png" />" class="icon-tb"></a>
 					</td>
 	
 	            </tr>
@@ -81,6 +83,6 @@
 	</section>
 	
 <%@ include file="footer.jsp" %>
-<script src="js/bootstrap.min.js"></script>
+	<script src="<c:url value="/resources/js/bootstrap.js" />" ></script>
 </body>
 </html>

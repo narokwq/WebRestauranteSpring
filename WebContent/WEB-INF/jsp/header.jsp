@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/mycss.css" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/cadastrocliente.css" />">
 
-	 <script  type="text/javascript" src="<c:url value="/resources/js/mascaras.js" />" ></script>
+	<script type="text/javascript" src="<c:url value="/resouces/js/bootstrap.min.js" />" ></script>
+	<script  type="text/javascript" src="<c:url value="/resources/js/mascaras.js" />" ></script>
     <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.2.4.js" />"></script>
+    
     <script type="text/javascript">
         $(window).scroll(function(){
             if ($(window).scrollTop() >= 80)

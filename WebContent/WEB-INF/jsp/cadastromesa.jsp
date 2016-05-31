@@ -1,13 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <%@ include file="header.jsp" %>
     <section>
         <div class="centrodiv">
-            <form action="cadastroMesa" method="post">
+        <c:url var="url" value="/mesa/save"></c:url>
+            <form:form action="${url}" method="post" modelAttribute="mesa">
             	<input type='hidden' name='id' value="${mesa.id}" />
                 <div class="form-group row">
                     <label for="inputNumero" class="col-sm-2 form-control-label">Numero</label>
@@ -26,11 +28,11 @@
                     </div>
                     <label for="inputCategoria" class="col-sm-2 form-control-label">De reserva?</label>
                     <div class="col-sm-4">
-                        <select class="form-control" id="inputCategoria" name="reserva">
+                        <select class="form-control" id="inputCategoria" name="reserva" >
                             <option value="0" <c:if test="${mesa.perReserva == true}">Selected</c:if>
                             >Sim</option>
                             <option value="1" <c:if test="${mesa.perReserva == false}">Selected</c:if>
-                            >Não</option>
+                            >NÃ£o</option>
                         </select>
                     </div>
                 </div>
@@ -39,12 +41,12 @@
                         <button type="submit" class="btn btn-secondary">Cadastrar</button>
                     </div>
                 </div>
-            </form>
+            </form:form>
         </div>
     </section>
 
 <%@ include file="footer.jsp" %>
-<script src="js/bootstrap.min.js"></script>
+<script src="<c:url value="/resources/js/bootstrap.js" />" ></script>
 </body>
 </body>
 </html>
