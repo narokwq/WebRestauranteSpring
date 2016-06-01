@@ -36,7 +36,7 @@ public class TradicionalService {
 		pedidoDAO.insert(pedido);
 	}
 
-	public   void atualizar(Tradicional pedido) throws Exception {			
+	public void atualizar(Tradicional pedido) throws Exception {			
 		for(ItemCardapio itemCardapio:pedido.getItensCardapio()){
 			if(itemCardapio.getCardapio() == null ){
 				throw new Exception("Item sem cardápio");
@@ -46,12 +46,12 @@ public class TradicionalService {
 		pedidoDAO.update(pedido);
 	}
 
-	public   void remover(Tradicional pedido) {
+	public void remover(Tradicional pedido) {
 		pedido.setStatus("Cancelado");
 		pedidoDAO.update(pedido);
 	}
 
-	public   Tradicional procurar(Tradicional pedido) {
+	public Tradicional procurar(Tradicional pedido) {
 		Tradicional result = null;
 		result = pedidoDAO.findById(pedido.getId());
 

@@ -29,13 +29,13 @@ public class MesaController {
 		List<Mesa> mesas = mesaService.listar();
 		map.addAttribute("mesas", mesas);
 		map.addAttribute("filtro", new Mesa());
-		// map.addAttribute("categoriaItens");
+		map.addAttribute("reservaOpcao");
 		return "listarmesa";
 	}
 
 	@RequestMapping(value = { "form" }, method = RequestMethod.GET)
 	public String createForm(ModelMap map) {
-		// map.addAttribute("categoriaItens", selectCategoriaAtivado());
+		map.addAttribute("reservaOpcao");
 		map.addAttribute("mesa", new Mesa());
 		return "cadastromesa";
 	}
@@ -71,8 +71,8 @@ public class MesaController {
 		List<Mesa> mesas = mesaService.buscarFiltro(filtro);
 		map.addAttribute("mesas", mesas);
 		map.addAttribute("filtro", filtro);
-		// map.addAttribute("categoriaItens");
-		return "/mesa/listar";
+		map.addAttribute("reservaOpcao");
+		return "listarmesa";
 	}
 
 	public Map<Long, String> selectMesaLista() {
@@ -84,29 +84,15 @@ public class MesaController {
 		}
 		return mesas;
 	}
-	// public Map<Long, String> selectMesaAtivado() {
-	//
-	// Map<Long, String> categorias = new HashMap<>();
-	//
-	// for (Mesa mesa : mesaService.listarAtivo()) {
-	// categorias.put(mesa.getId(), mesa.getNome());
-	// }
-	//
-	// return categorias;
-	// }
-
-	// @ModelAttribute(value = "categoriaItens")
-	// public Map<Long, String> selectCategoriaAll() {
-	//
-	// Map<Long, String> categorias = new HashMap<>();
-	//
-	// for (Categoria categoria : categoriaService.listar()) {
-	// categorias.put(categoria.getId(), categoria.getNome());
-	// }
-	//
-	// System.out.println(categorias);
-	//
-	// return categorias;
-	// }
+	
+	@ModelAttribute(value="reservaOpcao")
+	public Map<Boolean, String > selectStatus(){
+		
+		Map<Boolean, String> status = new HashMap<>();  
+	
+		status.put(true, "Sim"); 
+		status.put(false, "Não"); 	 		 
+		return status;
+	}
 
 }

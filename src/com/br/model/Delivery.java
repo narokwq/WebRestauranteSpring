@@ -6,7 +6,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity(name="Delivery")
 @PrimaryKeyJoinColumn(referencedColumnName="id")
-public class Delivery extends Pedido implements Comparable<Delivery> {
+public class Delivery extends Pedido{
 
 	private float troco;
 	
@@ -37,11 +37,6 @@ public class Delivery extends Pedido implements Comparable<Delivery> {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-	}
-
-	@Override
-	public int compareTo(Delivery o) {
-		return o.getId() < getId() ? -1:1;
 	}
 	
 }

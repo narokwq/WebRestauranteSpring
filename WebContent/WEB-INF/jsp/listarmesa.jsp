@@ -14,16 +14,14 @@
 
 						<label for="inputNome" class="col-sm-1 form-control-label">Nome</label>
 	                    <div class="col-sm-3">
-	                        <input type="text" class="form-control" id="inputNome" name="nome">
+	                        <form:input type="text" class="form-control" id="inputNome" path="descricao" />
 	                    </div>
 	                    <label for="inputReserva" class="col-sm-2 form-control-label">De reserva?</label>
 	                   	<div class="col-sm-3" >
-	                         <select id="inputReserva"  name="opcao" class="form-control" >
-	                         			<option  value="-1" >Todas</option>
-			                        	<option  value="0" >Sim</option>
-			                        	<option  value="1" >Não</option>
-			                        
-	                    	 </select>
+	                         <form:select id="inputReserva"  path="perReserva" class="form-control" >
+	                         			<form:option value="">Todos</form:option>
+			                        	<form:options items="${reservaOpcao}" />		                        
+	                    	 </form:select>
 	                    </div>
 	                    <div class="col-sm-offset-0 col-sm-2" >
 	                        <button style="float:right;" type="submit" class="btn btn-secondary">Pesquisar</button>

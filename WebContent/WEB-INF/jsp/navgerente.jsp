@@ -30,8 +30,8 @@
                     Mesa
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
-                    <a class="dropdown-item" href="cadastroMesa">Cadastrar</a>
-                    <a class="dropdown-item" href="listarMesa">Listar</a>
+                    <a class="dropdown-item" href="<c:url value="/mesa/form" />">Cadastrar</a>
+                    <a class="dropdown-item" href="<c:url value="/mesa/listar" />">Listar</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -39,7 +39,7 @@
                     Pedidos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
-                    <a class="dropdown-item" href="listarPedidos">Listar Pedidos</a>
+                    <a class="dropdown-item" href="<c:url value="/pedido/listar" />">Listar Pedidos</a>
                     <a class="dropdown-item" href="#">Tradicional</a>
                 </div>
             </li>

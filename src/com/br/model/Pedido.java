@@ -16,10 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public class Pedido implements EntityClass{
+public class Pedido implements EntityClass, Comparable<Pedido>{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -38,6 +39,9 @@ public class Pedido implements EntityClass{
 	@OneToMany(mappedBy="pedido", fetch=FetchType.EAGER)   
 	private List<ItemCardapio> itensCardapio = new ArrayList<>();
 	
+	@Transient
+	private String tipo;
+	
 	public void addItemCardapio(int qtd, Cardapio cardapio){   // Padrao Creator
 		ItemCardapio itemCardapio = new ItemCardapio();
 		itemCardapio.setQtd(qtd);
@@ -46,6 +50,14 @@ public class Pedido implements EntityClass{
 		itensCardapio.add(itemCardapio);
 	}
 	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	public void addItemCardapio(ItemCardapio item){
 		itensCardapio.add(item);
 	}
@@ -101,6 +113,10 @@ public class Pedido implements EntityClass{
 		this.itensCardapio = itensCardapio;
 	}
 
+	@Override
+	public int compareTo(Pedido o) {
+		return o.getId() < getId() ? -1:1;
+	}
 
 }
 
