@@ -63,22 +63,33 @@
 					
 					<td>
 						<c:if test="${empty pedidos.funcionario}">
-							<c:catch var="e">
-								<c:out value="${pedidos.cliente.nome}"></c:out>
-							</c:catch>
+							<c:if test="${pedidos['class'].simpleName == 'Delivery'}">
+								<c:catch var="e">
+									<c:out value="${pedidos.cliente.nome}"></c:out>
+								</c:catch>
+							</c:if>
+							<c:if test="${pedidos['class'].simpleName == 'Tradicional'}">
+								<c:catch var="e">
+									<c:out value="${pedidos.mesa.descricao}"></c:out>
+								</c:catch>
+							</c:if>
+							
 						</c:if>
 						<c:if test="${!empty pedidos.funcionario}">
-							<c:out value="${pedidos['class'].simpleName}"></c:out>
+							<c:catch var="e">
+								<c:out value="${pedidos.funcionario.nome}"></c:out>
+							</c:catch>
 						</c:if>
 					</td>					
 					<td>${pedidos.funcionario.nome}</td>
 					<td>
-						<c:if test="${empty pedidos.funcionario}">
+						<c:out value="${pedidos['class'].simpleName}" />
+						<%-- <c:if test="${empty pedidos.funcionario}">
 							<c:out value="Delivery"></c:out>
 						</c:if>
 						<c:if test="${!empty pedidos.funcionario}">
 							<c:out value="Tradicional"></c:out>
-						</c:if>
+						</c:if> --%>
 					</td>
 					<td>
 						<a href="<c:url value="/pedido/${pedidos.id}/detalhar" />" title="detalhar"><img src="<c:url value="/resources/image/detalhe.png" />" class="icon-tb"></a> 
