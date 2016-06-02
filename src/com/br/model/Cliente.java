@@ -2,7 +2,9 @@ package com.br.model;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -14,13 +16,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "Cliente")
 @PrimaryKeyJoinColumn(referencedColumnName = "id")
-public class Cliente extends Usuario {
+public class Cliente extends Usuario{
 
 	@Temporal(TemporalType.DATE)
 	private Date dataCadastro;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyyMMdd")
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date dataNasc;
 
 	@Embedded
@@ -29,6 +31,9 @@ public class Cliente extends Usuario {
 	@OneToMany(mappedBy = "cliente")
 	private Collection<Delivery> deliverys;
 
+	@OneToMany(mappedBy="user", cascade={CascadeType.ALL, CascadeType.REMOVE})
+	private List<Notificacao> notificacoes;
+	
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}
@@ -84,6 +89,23 @@ public class Cliente extends Usuario {
 	}
 	public boolean hasValidId(){
 		return getId() != null && getId() != 0;
+	}
+
+	@Override
+	public void pedidoCancelado() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pedidoStatusModificado(String status) {
+		Notificacao notificacao = new Notificacao();
+		notificacao.setMensage("Um pedido mudou o status para "+ status);
+		notificacao.setUser(this);
+		this.notificacoes.add(notificacao);
+		
+		System.out.println("Um pedido mudou o status para "+ status);
+		
 	}
 
 }

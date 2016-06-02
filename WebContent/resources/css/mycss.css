@@ -89,6 +89,10 @@ table{
 	margin-bottom: 0 !important;
 }
 
+.negrito .col-sm-3 {
+ font-weight: bold;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 

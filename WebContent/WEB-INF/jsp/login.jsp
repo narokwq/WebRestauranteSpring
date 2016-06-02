@@ -38,12 +38,19 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<c:if test="${msg != null}">
-						<div class="alert alert-danger" role="alert" style="margin-left:5%;  width: 90%; height: 50px;">
-							<span class="glyphicon glyphicon-exclamation-sign"
-								aria-hidden="true"></span> <span class="sr-only">Error:</span>${msg}
-						</div>
-					</c:if>
+
+						<spring:bind path="login">
+							<c:if test="${status.error}">
+							<div class="alert alert-danger" role="alert" style="margin-left:5%;  width: 90%; height: 54px;">
+								
+								<span class="glyphicon glyphicon-exclamation-sign"
+									aria-hidden="true"></span> <span class="sr-only">Error:</span>
+									<form:errors></form:errors>
+								
+							</div>
+							</c:if>
+						</spring:bind>
+					
 					<div class="col-sm-offset-2 col-sm-10" style="margin-top: 0px;">
 						<a class="btn btn-info" href="<c:url value="/cliente/form" />" role="button">Cadastra-se</a>
 						<button type="submit" class="btn btn-info"

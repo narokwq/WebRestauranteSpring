@@ -9,22 +9,22 @@
 <%@ include file="header.jsp" %>
 <section>
 	<div class="centrodiv" >
-		<c:url var="url" value="/cliente/update"></c:url>
+		<c:url var="url" value="/cliente/save"></c:url>
         <form:form name="formC" class="form-inline"  id="formulario-cadastro" action="${url}" method="post" modelAttribute="cliente" >
-        	
+        	<form:hidden path="id"/>
             <fieldset id="dados-acesso">
                 <legend style="font: bold 18px/45px sans-serif;">Dados de Acesso</legend>
                 <div class="form-group">
                   <label for="cLogin" class="col-sm-2 form-control-label">Login:</label>
                 	<div class="col-sm-10">
-                	   <input  value="${usuario.login.login}" class="form-control" id="cLogin" type="text" name="tLogin" size="16"  maxlength="20" disabled="disabled"  />
+                	   <form:input path="login.login" class="form-control" id="cLogin" type="text" name="tLogin" size="16"  maxlength="20" disabled="true" />
                	   </div>
                	</div>
                	<div class="form-group">
-                	<label for="cSenha" class="col-sm-2 form-control-label">Senha:</label> 
+                	<%-- <label for="cSenha" class="col-sm-2 form-control-label">Senha:</label> 
                 	<div class="col-sm-10">  
                 		<input value="${usuario.login.senha}"  class="form-control" id="cSenha" type="password" name="tSenha" size="16"  maxlength="8" placeholder="Password" style="margin-left: 10px;" disabled="disabled"  />
-                	</div>	
+                	</div> --%>	
            	   </div>	
             </fieldset>
             <fieldset id="info-pessoal">
@@ -47,7 +47,8 @@
                	 		</div>
            	 		<label for="cData" class="col-sm-2 form-control-label">Data de Nascimento</label>  
                     	<div class="col-sm-10"> 
-                        <p>	<form:input path="dataNasc" class="form-control" id="cData" type="date" name="tData"  /> </p>
+                    	<fmt:formatDate pattern="dd/MM/yyyy" value="${cliente.dataNasc}" var="date"/>
+                        <p>	<form:input  path="dataNasc" class="form-control" id="cData" type="date" /> </p>
                	 		</div>
                 </div>
             </fieldset>
@@ -88,7 +89,7 @@
 	                   	 <div class="col-sm-10">
 	                   	 <p>
 		                   	 <form:select id="cEst" name="tEst" class="form-control"   path="endereco.estado" >
-		                   		<option value="cliente.endereco.estado" > </option>
+
 		                        <option value="DF" >Distrito Federal</option>
 		                        <option value="MT">Mato Grosso</option>
 		                        <option value="PB" selected>Paraíba</option>
@@ -120,7 +121,6 @@
        </div>
 </section>
 <%@ include file="footer.jsp" %>
-<script src="<c:url value="/resources/js/bootstrap.min.js" />" ></script>
 <body>
 </body>
 </html>

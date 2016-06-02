@@ -73,6 +73,5 @@
 	
 <%@ include file="footer.jsp" %>
 <script src="js/bootstrap.min.js"></script>
-<script src="<c:url value="/resources/js/bootstrap.js" />" ></script>
 </body>
 </html>

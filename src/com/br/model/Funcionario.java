@@ -1,14 +1,18 @@
 package com.br.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity(name = "Funcionario")
 @PrimaryKeyJoinColumn(referencedColumnName = "id")
-public class Funcionario extends Usuario implements Comparable<Usuario> {
+public class Funcionario extends Usuario implements DeliveryListener, Comparable<Usuario> {
 
 	@Column(nullable = false)
 	private float salario;
@@ -19,6 +23,9 @@ public class Funcionario extends Usuario implements Comparable<Usuario> {
 	@JoinColumn(name = "cargo_id")
 	private Cargo cargo;
 
+	@OneToMany(mappedBy="user", cascade={CascadeType.ALL, CascadeType.REMOVE})
+	private List<Notificacao> notificacoes;
+	
 	public Funcionario() {
 
 	}
@@ -58,5 +65,19 @@ public class Funcionario extends Usuario implements Comparable<Usuario> {
 
 	public boolean hasValidId() {
 		return getId() != null && getId() != 0;
+	}
+
+	@Override
+	public void pedidoCancelado() {
+		Notificacao notificacao = new Notificacao();
+		notificacao.setMensage("Um pedido delivery foi cancelado");
+		notificacao.setUser(this);
+		this.notificacoes.add(notificacao);
+	}
+
+	@Override
+	public void pedidoStatusModificado(String status) {
+		// TODO Auto-generated method stub
+		
 	}
 }

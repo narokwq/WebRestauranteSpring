@@ -13,10 +13,9 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario implements EntityClass, Comparable<Usuario>{
-
+public class Usuario implements EntityClass, DeliveryListener, Comparable<Usuario>{
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	@Embedded
 	private Login login;
@@ -30,20 +29,11 @@ public class Usuario implements EntityClass, Comparable<Usuario>{
 		return this.getNome().compareTo(user.getNome());
 	}
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 	public void createLogin(String user, String senha) throws NoSuchAlgorithmException{   	// Padrao Creat
 		login = new Login();
 		login.setLogin(user);
 		login.criarSenha(senha);
 	}
-
 
 	public Login getLogin() {
 		return login;
@@ -82,6 +72,30 @@ public class Usuario implements EntityClass, Comparable<Usuario>{
 
 	public void setDesativado(boolean desativado) {
 		this.desativado = desativado;
+	}
+
+	@Override
+	public void pedidoCancelado() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pedidoStatusModificado(String status) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setId(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

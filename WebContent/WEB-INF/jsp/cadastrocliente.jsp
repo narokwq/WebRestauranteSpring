@@ -11,19 +11,19 @@
 <section>
 	<div class="centrodiv" >
 	<c:url var="url" value="/cliente/save"></c:url>
-        <form:form name="formC" class="form-inline"  id="formulario-cadastro" action="${url}" method="post" modelAttribute="cliente">
+        <form:form class="form-inline"  id="formulario-cadastro" action="${url}" method="post" modelAttribute="cliente">
             <fieldset id="dados-acesso">
                 <legend style="font: bold 18px/45px sans-serif;">Dados de Acesso</legend>
                 <div class="form-group">
                   <label for="cLogin" class="col-sm-2 form-control-label">Login:</label>
                 	<div class="col-sm-10">
-                	   <form:input path="login.login" class="form-control" id="cLogin" type="text" name="tLogin" size="16"  maxlength="20" placeholder="Login" required='required' />
+                	   <form:input path="login.login" class="form-control" id="cLogin" size="16"  maxlength="20" placeholder="Login" required='required' />
                	   </div>
                	</div>
                	<div class="form-group">
                 	<label for="cSenha" class="col-sm-2 form-control-label">Senha:</label> 
                 	<div class="col-sm-10">  
-                		<form:input path="login.senha" class="form-control" id="cSenha" type="password" name="tSenha" size="16"  maxlength="8" placeholder="Password" style="margin-left: 10px;" required='required' />
+                		<form:password path="login.senha" class="form-control" id="cSenha" size="16"  maxlength="8" placeholder="Password" style="margin-left: 10px;" required='required' />
                 	</div>	
            	   </div>	
             </fieldset>
@@ -32,23 +32,23 @@
                	<div class="form-group" >
           	     	<label for="cNome" class="col-sm-2 form-control-label">Nome:</label>    
 	           	     	<div class="col-sm-10"> 
-	            	     <p>	<form:input path="nome" class="form-control" id="cNome" type="text" name="tNome" size="30" maxlength="30" required='required' /> </p>
+	            	     <p>	<form:input path="nome" class="form-control" id="cNome" size="30" maxlength="30" required='required' /> </p>
 						</div>
 				
 					<label for="cTelefone" class="col-sm-2 form-control-label">Telefone:</label>    
 						<div class="col-sm-10"> 	
-						<p>	<form:input path="telefone" class="form-control" id="cTelefone" type="text" name="tTelefone" size="11" maxlength="14" placeholder="(00)00000-0000" onkeypress="return mascaraTEL(this,'(##)#####-####')" required='required' /> </p>
+						<p>	<form:input path="telefone" class="form-control" id="cTelefone" type="text" size="11" maxlength="14" placeholder="(00)00000-0000" onkeypress="return mascaraTEL(this,'(##)#####-####')" required='required' /> </p>
 						</div>
 				</div>
 				<div class="form-group" >                    
                     <label for="cEmail" class="col-sm-2 form-control-label">Email:</label> 
                     	<div class="col-sm-10"> 
-                    	<p>	<form:input path="email" class="form-control" id="cEmail" type="email" name="tEmail" size="30" placeholder="nome@example.com" required='required' /> </p>
+                    	<p>	<form:input path="email" class="form-control" id="cEmail" type="email" size="30" placeholder="nome@example.com" required='required' /> </p>
                	 		</div>
            	 		<label for="cData" class="col-sm-2 form-control-label">Data de Nascimento</label>  
                     	<div class="col-sm-10"> 
                         	<p>	       							
-                        		<form:input path="dataNasc" class="form-control" id="cData" type="date" name="dataNasc" required='required' />                 <!-- Aqui não está pegando a data,tentei usa jstl fmt:date mas nao consegui. -->        	
+                        		<form:input path="dataNasc" class="form-control" id="cData" type="date" required='required' /> <!-- Aqui não está pegando a data,tentei usa jstl fmt:date mas nao consegui. -->        	
                        		</p>               	 			
                	 		</div>
                 </div>
@@ -115,8 +115,7 @@
         </form:form>
        </div>
 </section>
-<%@ include file="footer.jsp" %>
-<script src="<c:url value="/resources/js/bootstrap.js" />" ></script>    
+<%@ include file="footer.jsp" %>    
 <body>
 </body>
 </html>

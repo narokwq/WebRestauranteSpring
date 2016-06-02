@@ -82,6 +82,5 @@
 	</section>
 	
 <%@ include file="footer.jsp" %>
-	<script src="<c:url value="/resources/js/bootstrap.js" />" ></script>
 </body>
 </html>

@@ -45,17 +45,17 @@ public class PedidoController {
 		return "listarpedidos";
 	}
 	
-/*	@RequestMapping(value="{id}/detalhado", method=RequestMethod.GET)
+	@RequestMapping(value="{id}/detalhar", method=RequestMethod.GET)
 	public String detalhar(@PathVariable Long id, ModelMap map, HttpSession session){
 		
-		Delivery delivery = deliveryService.procurar(new Delivery(id));
+		Pedido pedido = pedidoService.procurar(new Pedido(id));
 		
-		map.addAttribute("delivery", delivery);
+		map.addAttribute("pedido", pedido);
 		
-		return "detalhardeliverycliente";
+		return "detalharpedido";
 	}
 	
-	@RequestMapping(value="filtrar", method=RequestMethod.GET)
+	/*	@RequestMapping(value="filtrar", method=RequestMethod.GET)
 	public String filtrar(@ModelAttribute("filtro") Delivery filtro, ModelMap map, HttpSession session){
 		filtro.setCliente((Cliente)session.getAttribute("usuario"));
 		List<Delivery> deliverys = deliveryService.buscarFiltro(filtro);

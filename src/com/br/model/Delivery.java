@@ -1,13 +1,21 @@
 package com.br.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Transient;
 
 @Entity(name="Delivery")
 @PrimaryKeyJoinColumn(referencedColumnName="id")
 public class Delivery extends Pedido{
-
+	
+	@Transient
+	List<DeliveryListener> listener = new ArrayList<>();
+	
 	private float troco;
 	
 	public Delivery() {
@@ -37,6 +45,29 @@ public class Delivery extends Pedido{
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public Collection<DeliveryListener> getListener() {
+		return listener;
+	}
+
+	public void setListener(List<DeliveryListener> listener) {
+		this.listener = listener;
+	}
+	
+	public void addListener(DeliveryListener listener) {
+		this.listener.add(listener);
+	}
+	
+	public void mudouEstado(){
+		for (DeliveryListener deliveryListener : listener) {
+			deliveryListener.pedidoStatusModificado(getStatus());
+		}
+	}
+	
+	public void setStatus(String status) {
+		this.setStatus(status);
+		mudouEstado();
 	}
 	
 }

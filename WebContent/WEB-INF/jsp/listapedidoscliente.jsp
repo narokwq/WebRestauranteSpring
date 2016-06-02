@@ -75,6 +75,5 @@
 			</c:if>	
 	</section>
 <%@ include file="footer.jsp" %>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
