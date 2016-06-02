@@ -45,18 +45,26 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    Usuarios
+                    Funcionario
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
-                <a class="dropdown-item" href="listarFuncionario">Funcionario</a>
-               	<a class="dropdown-item" href="listarClientes">Clientes</a>
+                <a class="dropdown-item" href="<c:url value="/funcionario/form" />" >Cadastrar</a>
+               	<a class="dropdown-item" href="#">Listar</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Cliente
+                </a>
+                <div class="dropdown-menu" aria-labelledby="Preview">
+                <a class="dropdown-item" href="#">Listar</a>
                 </div>
             </li>            
              <li class="nav-item">
                 <a class="nav-link" href="#">Relatórios</a>
             </li>
             <li class="nav-item pull-xs-right">
-	        	<a class="nav-link" href="<c:url value="/logout" />">Logout</a>
+	        	<a class="nav-link" href="<c:url value="/logout" /> ">Logout</a>
 	        </li>
             <li class="nav-item pull-xs-right">
                 <a class="nav-link" href="#">Meu Cadastro</a>

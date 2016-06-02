@@ -14,7 +14,8 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter{
        HttpSession session = request.getSession();
        String uri = request.getRequestURI(); 
        String contextPath = request.getContextPath();
-       if(uri.endsWith("login") || uri.endsWith("logar")){ 
+       System.out.println(uri);
+       if(uri.endsWith("login") || uri.endsWith("logar") || uri.endsWith("cliente/form") || uri.endsWith("cliente/save")){ 
            return true; 
        } 
        if(session.getAttribute("usuario") != null) {  

@@ -2,14 +2,12 @@ package com.br.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
 import com.br.model.Cliente;
-import com.br.model.Funcionario;
 import com.br.model.Login;
 
 @Repository
@@ -53,6 +51,6 @@ public class ClienteDAO extends GenericDAO<Cliente>{
 		query.setParameter("nome", "%"+filtro.getNome()+"%");
 		
 		return query.getResultList();	
-}
+	}
 
 }

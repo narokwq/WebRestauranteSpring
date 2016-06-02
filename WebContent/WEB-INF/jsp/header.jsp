@@ -1,16 +1,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap4.css" />">
     <link rel="stylesheet" href="<c:url value="/resources/css/mycss.css" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/cadastrocliente.css" />">
 
-	<script type="text/javascript" src="<c:url value="/resouces/js/bootstrap.min.js" />" ></script>
 	<script  type="text/javascript" src="<c:url value="/resources/js/mascaras.js" />" ></script>
     <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.2.4.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />" ></script>
     
     <script type="text/javascript">
         $(window).scroll(function(){

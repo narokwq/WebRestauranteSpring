@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -33,10 +34,10 @@
 	            <thead>
 	            <tr>
 	                <th>Numero</th>
-	                <th>DescriÃ§Ã£o</th>
+	                <th>Descrição</th>
 	                <th>Capacidade</th>
 	                <th>Resevavel</th>
-	                <th>AÃ§Ãµes</th>
+	                <th>Ações</th>
 	            </tr>
 	            </thead>
 	            <tbody>
@@ -52,7 +53,7 @@
 							Sim
 					</c:if>
 					<c:if test="${mesa.perReserva eq false}">
-							NÃ£o
+							Não
 					</c:if>
 					</td>
 					<td>

@@ -27,7 +27,7 @@
                     Meu Cadastro
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
-                    <a class="dropdown-item" href="AlterarContaCliente">Alterar Meus Dados</a>
+                    <a class="dropdown-item" href="<c:url value="/cliente/${usuario.id}/form"/>">Alterar Meus Dados</a>
                     <a class="dropdown-item" href="DesativarContaCliente">Desativar Conta</a>
                 </div>
             </li>

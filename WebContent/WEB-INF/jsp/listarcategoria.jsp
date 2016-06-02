@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -28,7 +29,7 @@
 	                <th>Numero</th>
 	                <th>Nome</th>
 	                <th>Status</th>
-	                <th>AÃ§Ãµes</th>
+	                <th>Ações</th>
 	            </tr>
 	            </thead>
 	            <tbody>

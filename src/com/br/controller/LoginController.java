@@ -17,8 +17,6 @@ import com.br.model.Login;
 import com.br.model.Usuario;
 import com.br.services.UsuarioService;
 
-
-
 @Controller
 public class LoginController {
 	
@@ -63,4 +61,6 @@ public class LoginController {
 		session.invalidate();
 		return "redirect:/login";
 	}
+	
+
 }
