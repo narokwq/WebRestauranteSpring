@@ -1,3 +1,4 @@
+    
     <div id="topo">
         <span>Restaurante</span>
     </div >
@@ -16,23 +17,19 @@
                     <a class="dropdown-item" href="<c:url value="/delivery/listar" />">Meus Pedidos</a>
                 </div>
             </li>            
-            <li class="nav-item pull-xs-right">
-	        	<a class="nav-link" href="<c:url value="/logout" />">Logout</a>
-	        </li>
-	       <li class="nav-item pull-xs-right">
-            <a href="#" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false" ">Notificações <span class="badge">1</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    Meu Cadastro
+            <li class="nav-item dropdown pull-xs-right">
+	        	<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <c:out value="Bem-Vindo:  ${usuario.nome}"></c:out>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
-                    <a class="dropdown-item" href="<c:url value="/cliente/${usuario.id}/form"/>">Alterar Meus Dados</a>
-                    <a class="dropdown-item" href="DesativarContaCliente">Desativar Conta</a>
+                    <a class="dropdown-item" href="<c:url value="/cliente/form/alter"/>">Alterar Meus Dados</a>
+                    <a class="dropdown-item" href="<c:url value="/cliente/remove"/>">Desativar Conta</a>
+                    <a class="dropdown-item" href="<c:url value="/logout" />">Logout</a>
                 </div>
-            </li>
-        </ul>
-       
-	        
-      
+	        </li>
+	       <li class="nav-item pull-xs-right">
+            	<a href="#" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false" >Notificações <span class="badge">1</span></a>
+           </li>
+            
+        </ul>      
     </nav>

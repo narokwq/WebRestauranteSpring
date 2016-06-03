@@ -41,18 +41,20 @@
                     Pedidos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
-                    <a class="dropdown-item" href="listarPedidos">Listar Pedidos</a>
+                    <a class="dropdown-item" href="<c:url value="/pedido/listar" />">Listar Pedidos</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="listarFuncionario">Funcionario</a>
+                <a class="nav-link" href="#">Notificações</a>
             </li>  
-            <li class="nav-item pull-xs-right">
-	        	<a class="nav-link" href="<c:url value="/logout" />">Logout</a>
-	        </li>       
-            <li class="nav-item pull-xs-right">
-                <a class="nav-link" href="#">Meu Cadastro</a>
-            </li>           
+            <li class="nav-item dropdown pull-xs-right">
+	        	<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <c:out value="Bem-Vindo:  ${usuario.nome}"></c:out>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="Preview">
+                    <a class="dropdown-item" href="<c:url value="/logout" />">Logout</a>
+                </div>
+	        </li>          
             
         </ul>
        

@@ -25,7 +25,15 @@
                     <a class="dropdown-item" href="<c:url value="/cardapio/listar" />">Listar</a>
                 </div>
             </li>
-            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Mesa
+                </a>
+                <div class="dropdown-menu" aria-labelledby="Preview">
+                    <a class="dropdown-item" href="<c:url value="/mesa/form" />">Cadastrar</a>
+                    <a class="dropdown-item" href="<c:url value="/mesa/listar" />">Listar</a>
+                </div>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     Pedidos
@@ -41,32 +49,27 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
                 <a class="dropdown-item" href="<c:url value="/funcionario/form" />" >Cadastrar</a>
-               	<a class="dropdown-item" href="#">Listar</a>
+               	<a class="dropdown-item" href="<c:url value="/funcionario/listar" />">Listar</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    Mesa
+                    Reserva
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
-                    <a class="dropdown-item" href="<c:url value="/mesa/form" />">Cadastrar</a>
-                    <a class="dropdown-item" href="<c:url value="/mesa/listar" />">Listar</a>
+                <a class="dropdown-item" href="#">Cadastrar</a>          
+                <a class="dropdown-item" href="#">Listar</a>
                 </div>
-            </li>
-            <li class="nav-item dropdown">
+            </li>            
+             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    Reservas
+                    Cargo
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
                 <a class="dropdown-item" href="#">Cadastrar</a>
-                </div>
-                <div class="dropdown-menu" aria-labelledby="Preview">
                 <a class="dropdown-item" href="#">Listar</a>
                 </div>
-            </li>          
-             <!-- <li class="nav-item">
-                <a class="nav-link" href="#">Relatórios</a>
-            </li> -->
+            </li>
             <li class="nav-item pull-xs-right">
 	        	<a class="nav-link" href="<c:url value="/logout" /> ">Logout</a>
 	        </li>

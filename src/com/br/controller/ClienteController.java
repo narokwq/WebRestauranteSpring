@@ -3,20 +3,17 @@ package com.br.controller;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.br.model.Cliente;
 import com.br.model.Login;
-import com.br.model.Usuario;
 import com.br.services.ClienteService;
 
 @RequestMapping(value = "cliente")
@@ -42,42 +39,40 @@ public class ClienteController {
 		return "cadastrocliente";
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "{id}/form")
-	public String updateForm(@PathVariable Long id, ModelMap map, HttpSession session) {
-		Cliente cliente = (Cliente) session.getAttribute("usuario");
-		
-		map.addAttribute("cliente", clienteService.procurar(cliente));
+	@RequestMapping(method = RequestMethod.GET, value = "/form/alter")
+	public String updateForm(ModelMap map, HttpSession session) {
+		Long id = (Long) session.getAttribute("id");
+		Cliente cliente = clienteService.procurar(new Cliente(id));		
+		session.setAttribute("login", cliente.getLogin());
+		map.addAttribute("cliente", cliente);
 		return "alterarcliente";
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "{id}/remove")
-	public String desativarCliente(@PathVariable Long id, ModelMap map) throws Exception {
-		clienteService.desativar(new Cliente(id));
-		return "redirect:cadastrocliente";
+	@RequestMapping(method = RequestMethod.GET, value = "remove")
+	public String desativarCliente(ModelMap map, HttpSession session) throws Exception {
+		Cliente cliente = (Cliente) session.getAttribute("usuario");
+		clienteService.desativar(cliente);
+		return "redirect:/login";
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "save")
-	public String save(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult result, HttpSession session) throws Exception {
+	public String save(@ModelAttribute("cliente") Cliente cliente, BindingResult result) throws Exception {
 
 		if (!cliente.hasValidId()) {
 			Date dataCadastro = new Date();
 			cliente.getLogin().criarSenha(cliente.getLogin().getSenha());
 			cliente.setDataCadastro(dataCadastro);
 			clienteService.criar(cliente);
-		}else{
-			Login login = ((Usuario)session.getAttribute("usuario")).getLogin();
-			cliente.setLogin(login);
-			clienteService.atualizar(cliente);
-			return "redirect:/home";
 		}
 		return "redirect:/login";
 	}
 
+
 	@RequestMapping(method = RequestMethod.POST, value = "update")
-	public String update(@ModelAttribute("cliente") Cliente cliente) throws Exception {
-		System.out.println(cliente.hasValidId());
-		if (cliente.hasValidId())
-			
+	public String update(@ModelAttribute("cliente") Cliente cliente,HttpSession session) throws Exception {
+		Login login = (Login) session.getAttribute("login");
+		cliente.setLogin(login);
+		if (cliente.hasValidId())						
 			clienteService.atualizar(cliente);
 		return "redirect:/home";
 	}

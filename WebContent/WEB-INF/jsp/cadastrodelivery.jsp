@@ -45,7 +45,6 @@
 		            	<td>${item.cardapio.nome}</td>
 		            	<td>${item.qtd}</td>
 		            	<td><fmt:formatNumber type="currency" currencySymbol="R$ " value="${item.qtd*item.cardapio.preco}"/></td>
-		            	<c:set var="test" value="${test += item.qtd*item.cardapio.preco}" scope="application" />
 		                <td><a href="<c:url value="/delivery/${item.cardapio.id}/remove" />"><img src="<c:url value="/resources/image/delete.png" />" class="icon-tb"></a></td>	               
 		            </tr>
 				</c:forEach>

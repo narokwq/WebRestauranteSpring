@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -18,12 +17,9 @@ public class Cardapio implements EntityClass{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@NotEmpty(message="Nome não pode ser vazio.")
+	@NotEmpty
 	private String nome;
-	@NotEmpty(message="Preco não pode ser vazio.")
-
 	private float preco;
-	
 	private boolean status;
 
 	@ManyToOne

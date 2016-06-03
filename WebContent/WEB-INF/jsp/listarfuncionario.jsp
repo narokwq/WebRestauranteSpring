@@ -12,11 +12,11 @@
 			<form action="ListarPedidos">
 				<div class="form-group row">
 				
-						<label for="inputNome" class="col-sm-2 form-control-label">Nome</label>
-	                    <div class="col-sm-1">
+						<label for="inputNome" class="col-sm-1 form-control-label">Nome</label>
+	                    <div class="col-sm-2">
 	                        <input type="text" class="form-control" id="inputNome" placeholder="000" name="fNome">
 	                    </div>
-	                    <div class="col-sm-offset-0 col-sm-2" >
+	                    <div class="col-sm-offset-0 col-sm-8" >
 	                        <button style="float:right;" type="submit" class="btn btn-secondary">Pesquisar</button>
 	                    </div>
 				</div>
@@ -41,10 +41,9 @@
 					<td>${funcionario.cargo.descricao}</td>
 					<td>${funcionario.salario}</td>
 					<td>
-						<a href="DetalharDeliveryCliente?id=${pedidos.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> 
-						<a href="#" title="alterar"><img src="image/edit.png" class="icon-tb"></a>
+						<a href="<c:url value="/funcionario/${funcionario.id}/form" />" title="alterar"><img src="<c:url value="/resources/image/edit.png" />" class="icon-tb"></a>
 					</td>
-	
+					
 	            </tr>
 	            </c:forEach>
 	            </tbody>

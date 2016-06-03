@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.br.dao.PedidoDAO;
-import com.br.model.Delivery;
 import com.br.model.Pedido;
 import com.br.model.Tradicional;
 
@@ -26,9 +25,4 @@ public class PedidoService {
 
 		return result;
 	}
-
-	public Pedido procurar(Pedido pedido) {
-		return pedidoDAO.findById(pedido.getId());
-	}
-
 }

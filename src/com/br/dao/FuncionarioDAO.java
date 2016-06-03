@@ -2,12 +2,10 @@ package com.br.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
-import com.br.model.Cardapio;
 import com.br.model.Funcionario;
 
 @Repository

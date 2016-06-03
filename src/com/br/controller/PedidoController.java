@@ -1,27 +1,16 @@
 package com.br.controller;
 
-import java.text.NumberFormat;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.br.model.Cardapio;
-import com.br.model.Cliente;
-import com.br.model.Delivery;
-import com.br.model.ItemCardapio;
-import com.br.model.ParamItem;
 import com.br.model.Pedido;
 import com.br.services.PedidoService;
 
@@ -45,17 +34,17 @@ public class PedidoController {
 		return "listarpedidos";
 	}
 	
-	@RequestMapping(value="{id}/detalhar", method=RequestMethod.GET)
+/*	@RequestMapping(value="{id}/detalhado", method=RequestMethod.GET)
 	public String detalhar(@PathVariable Long id, ModelMap map, HttpSession session){
 		
-		Pedido pedido = pedidoService.procurar(new Pedido(id));
+		Delivery delivery = deliveryService.procurar(new Delivery(id));
 		
-		map.addAttribute("pedido", pedido);
+		map.addAttribute("delivery", delivery);
 		
-		return "detalharpedido";
+		return "detalhardeliverycliente";
 	}
 	
-	/*	@RequestMapping(value="filtrar", method=RequestMethod.GET)
+	@RequestMapping(value="filtrar", method=RequestMethod.GET)
 	public String filtrar(@ModelAttribute("filtro") Delivery filtro, ModelMap map, HttpSession session){
 		filtro.setCliente((Cliente)session.getAttribute("usuario"));
 		List<Delivery> deliverys = deliveryService.buscarFiltro(filtro);

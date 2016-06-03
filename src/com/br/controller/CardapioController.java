@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -64,10 +62,7 @@ public class CardapioController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="save")
-	public String save(@Valid @ModelAttribute("cardapio") Cardapio cardapio, BindingResult result) throws Exception{
-		if(result.hasErrors()){
-			return "cadastrocardapio";
-		}
+	public String save(@ModelAttribute("cardapio") Cardapio cardapio, BindingResult result) throws Exception{
 		if(cardapio.hasValidId()){
 			cardapioService.atualizar(cardapio);
 		}

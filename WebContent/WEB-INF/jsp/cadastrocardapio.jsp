@@ -16,22 +16,19 @@
                     <label for="inputNome" class="col-sm-2 form-control-label">Nome</label>
                     <div class="col-sm-10">
                         <form:input class="form-control" id="inputNome" placeholder="Nome" path="nome" required="required" />
-                        <form:errors path="nome"></form:errors>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPreco" class="col-sm-2 form-control-label" >Preço</label>
                     <div class="col-sm-4">
                         <form:input type="number" step="0.01" min="0" class="form-control" id="inputPreco" placeholder="0.00" required="required" path="preco" />
-                        <form:errors path="preco"></form:errors>
                     </div>
                     <label for="inputCategoria" class="col-sm-2 form-control-label">Categoria</label>
                     <div class="col-sm-4">
                        		
                             <form:select id="inputReserva" class="form-control" path="categoria.id" >
                             	<form:options items="${categoriaItens}" />
-                            </form:select>
-                            		                        
+                            </form:select>			                        
                       
                     </div>
                 </div>
