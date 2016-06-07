@@ -33,7 +33,7 @@ public class Cliente extends Usuario {
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Cliente(Long id) {
 		this.setId(id);
 	}
@@ -83,7 +83,8 @@ public class Cliente extends Usuario {
 		}
 		return valor;
 	}
-	public boolean hasValidId(){
+
+	public boolean hasValidId() {
 		return getId() != null && getId() != 0;
 	}
 

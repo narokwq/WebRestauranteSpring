@@ -2,7 +2,6 @@ package com.br.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
@@ -28,5 +27,13 @@ public class PedidoDAO extends GenericDAO<Pedido>{
 		return (List<Pedido>) result.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Pedido> getById(Pedido filtro) {
+		
+		String str = "select c from Pedido c where c.id = :id";
+		Query query=manager.createQuery(str);
+		query.setParameter("id",filtro.getId());
+		return query.getResultList();
+	}
 
 }

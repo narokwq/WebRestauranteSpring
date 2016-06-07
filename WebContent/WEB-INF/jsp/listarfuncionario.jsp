@@ -13,10 +13,10 @@
 				<div class="form-group row">
 				
 						<label for="inputNome" class="col-sm-1 form-control-label">Nome</label>
-	                    <div class="col-sm-2">
-	                        <input type="text" class="form-control" id="inputNome" placeholder="000" name="fNome">
+	                    <div class="col-sm-4 col-sm-offset-0">
+	                        <input type="text" class="form-control" placeholder="" >
 	                    </div>
-	                    <div class="col-sm-offset-0 col-sm-8" >
+	                    <div class="col-sm-offset-0 col-sm-6" >
 	                        <button style="float:right;" type="submit" class="btn btn-secondary">Pesquisar</button>
 	                    </div>
 				</div>

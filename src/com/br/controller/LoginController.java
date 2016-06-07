@@ -40,7 +40,7 @@ public class LoginController {
 
 		if(usuarioBD == null){
 			user.setSenha("");
-			map.addAttribute("msg", "Nome de usuário ou senha errados. Por favor tente outra vez.");
+			result.rejectValue("","login", "Nome de usuário ou senha errados. Por favor tente outra vez.");
 			return  "login";
 		}
 //		Temporario, mudar pra tabela de permissões no futuro

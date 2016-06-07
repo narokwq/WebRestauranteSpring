@@ -119,7 +119,7 @@ public class DeliveryController {
 		}
 		if (!delivery.getItensCardapio().isEmpty()) {
 			delivery.setCliente((Cliente) session.getAttribute("usuario"));
-			delivery.setTroco(troco - delivery.getTotal());
+			delivery.setTroco(troco);
 			deliveryService.criar(delivery);
 			setItensSession(session, new Delivery());
 		}

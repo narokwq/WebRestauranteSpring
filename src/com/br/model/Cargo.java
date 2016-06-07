@@ -5,16 +5,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="Cargo")
-public class Cargo implements EntityClass, Comparable<Cargo>{
+@Entity(name = "Cargo")
+public class Cargo implements EntityClass, Comparable<Cargo> {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private boolean desativado;
-	
+
 	private String descricao;
+
+	public Cargo() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Cargo(Long id) {
+		this.id = id;
+	}
 
 	public Long getId() {
 		return id;
@@ -31,6 +39,7 @@ public class Cargo implements EntityClass, Comparable<Cargo>{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 	@Override
 	public String toString() {
 		return "Cargo [descrição=" + descricao + "]";
@@ -43,9 +52,10 @@ public class Cargo implements EntityClass, Comparable<Cargo>{
 	public void setDesativado(boolean desativado) {
 		this.desativado = desativado;
 	}
+
 	@Override
 	public int compareTo(Cargo o) {
-//		return status ? -1:1;
+		// return status ? -1:1;
 		return this.id > o.getId() ? 1 : -1;
 	}
 }

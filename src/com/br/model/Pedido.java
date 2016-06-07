@@ -42,6 +42,14 @@ public class Pedido implements EntityClass, Comparable<Pedido>{
 	@Transient
 	private String tipo;
 	
+	public Pedido() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Pedido(Long id) {
+		this.id = id;
+	}
+	
 	public void addItemCardapio(int qtd, Cardapio cardapio){   // Padrao Creator
 		ItemCardapio itemCardapio = new ItemCardapio();
 		itemCardapio.setQtd(qtd);

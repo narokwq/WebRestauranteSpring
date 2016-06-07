@@ -9,13 +9,13 @@
 <%@ include file="header.jsp" %>
 	<section>
 		<div class="centrodiv">
-			<c:url var="url" value="/categoria/filtrar" />
+			<c:url var="url" value="/cargo/filtrar" />
 			<form:form action="${url}" modelAttribute="filtro" method="GET">
 				<div class="form-group row">
 
-						<label for="inputNome" class="col-sm-1 form-control-label">Nome</label>
-	                    <div class="col-sm-3">
-	                        <form:input path="nome" class="form-control" id="inputNome" />
+						<label class="col-sm-1 form-control-label">Descrição</label>
+	                    <div class="col-sm-3 col-sm-offset-1">
+	                        <form:input path="descricao" class="form-control" />
 	                    </div>
 	                    <div class="col-sm-offset-0 col-sm-2" >
 	                        <button style="float:right;" type="submit" class="btn btn-secondary">Pesquisar</button>
@@ -27,28 +27,27 @@
 	            <thead>
 	            <tr>
 	                <th>Numero</th>
-	                <th>Nome</th>
+	                <th>Descrição</th>
 	                <th>Status</th>
-	                <th>Ações</th>
+	                <th></th>
 	            </tr>
 	            </thead>
 	            <tbody>
 	            
-				<c:forEach var="categoria" items="${categorias}" >
+				<c:forEach var="cargos" items="${cargos}" >
 	            <tr>
-	                <th scope="row">${categoria.id}</th>
-	                <td>${categoria.nome}</td>
-	             	
+	                <th scope="row">${cargos.id}</th>
+	                <td>${cargos.descricao}</td>	             	
 					<td>
-					<c:if test="${categoria.status eq true}">
+					<c:if test="${cargos.desativado eq true}">
 							Ativo
 					</c:if>
-					<c:if test="${categoria.status eq false}">
+					<c:if test="${cargos.desativado eq false}">
 							Desativado
 					</c:if>
 					</td>
 					<td>				
-						<a href='<c:url value="/categoria/${categoria.id}/form" />'><img src="<c:url value="/resources/image/switch.png" />" class="icon-tb"></a> 
+						<a href='<c:url value="/cargo/${cargos.id}/form" />'><img src="<c:url value="/resources/image/switch.png" />" class="icon-tb"></a> 
 					</td>
 	
 	            </tr>

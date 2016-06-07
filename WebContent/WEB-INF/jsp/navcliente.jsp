@@ -1,4 +1,4 @@
-    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <div id="topo">
         <span>Restaurante</span>
     </div >
@@ -27,9 +27,6 @@
                     <a class="dropdown-item" href="<c:url value="/logout" />">Logout</a>
                 </div>
 	        </li>
-	       <li class="nav-item pull-xs-right">
-            	<a href="#" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false" >Notificações <span class="badge">1</span></a>
-           </li>
             
         </ul>      
     </nav>

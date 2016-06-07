@@ -44,7 +44,7 @@
 	                	<a href="" style="margin-left:8px;" class="btn btn-secondary">Atendido</a>
 	                </div> 
 	                <div class="col-sm-2" >
-	                	<a href="" style="margin:auto;" class="btn btn-secondary">Comcluido</a>
+	                	<a href="" style="margin:auto;" class="btn btn-secondary">Concluido</a>
 	                </div> 
 	                <div class="col-sm-2" >
 	                	<a href="" style="margin:auto;" class="btn btn-secondary">Cancelar</a>
