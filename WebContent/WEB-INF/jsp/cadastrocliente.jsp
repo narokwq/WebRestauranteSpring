@@ -110,7 +110,7 @@
             </fieldset>
             	<div style="margin-top: 20px;">	
 	           		<input name="bntEnviar" id="bnt-enviar"  class="btn btn-secondary" type="submit" value="Enviar" >
-	       			<a id="bnt-voltar" class="btn btn-secondary" role="button" href="javascript:history.back();" >Voltar</a>
+	       			<a id="bnt-voltar" class="btn btn-secondary" role="button" href="<c:url value="/login" />" >Voltar</a>
 	        	</div>
         </form:form>
        </div>

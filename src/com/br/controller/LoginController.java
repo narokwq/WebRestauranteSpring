@@ -28,7 +28,7 @@ public class LoginController {
 		map.addAttribute("login", new Login());
 		return "login";
 	}
-	
+
 	@RequestMapping(value="logar", method=RequestMethod.POST)
 	public String logar(@Valid @ModelAttribute("login") Login user, BindingResult result, HttpSession sessao, ModelMap map){
 		if(result.hasErrors()){
