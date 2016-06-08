@@ -6,7 +6,9 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
-import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity(name = "Funcionario")
 @PrimaryKeyJoinColumn(referencedColumnName = "id")
@@ -15,7 +17,8 @@ public class Funcionario extends Usuario implements Comparable<Usuario> {
 	@Column(nullable = false)
 	private float salario;
 	@Column(nullable = false, length = 11)
-	@Size(min=11 ,max = 11, message = "Cpf invalido!")
+	@NotEmpty(message = "CPF vazio")
+	@CPF(message = "Cpf invalido!")
 	private String cpf;
 
 	@ManyToOne(fetch=FetchType.EAGER)

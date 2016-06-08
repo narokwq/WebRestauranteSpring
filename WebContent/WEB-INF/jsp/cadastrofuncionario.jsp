@@ -17,13 +17,13 @@
                 <div class="form-group">
                   <label for="cLogin" class="col-sm-2 form-control-label">Login:</label>
                 	<div class="col-sm-10">
-                	   <form:input path="login.login" class="form-control" id="cLogin" type="text" name="login.login" size="16"  maxlength="20" placeholder="Login" required='required' />
+                	   <form:input path="login.login" class="form-control" id="cLogin" type="text" size="16"  maxlength="20" placeholder="Login" required='required' />
                	   </div>
                	</div>
                	<div class="form-group">
                 	<label for="cSenha" class="col-sm-2 form-control-label">Senha:</label> 
                 	<div class="col-sm-10">  
-                		<form:input path="login.senha" class="form-control" id="cSenha" type="password" name="login.senha" size="16"  maxlength="8" placeholder="Password" style="margin-left: 10px;" required='required' />
+                		<form:input path="login.senha" class="form-control" id="cSenha" type="password" size="16"  maxlength="8" placeholder="Password" style="margin-left: 10px;" required='required' />
                 	</div>	
            	   </div>	
             </fieldset>
@@ -32,30 +32,31 @@
                	<div class="form-group" >
           	     	<label for="cNome" class="col-sm-2 form-control-label">Nome:</label>    
 	           	     	<div class="col-sm-10"> 
-	            	     <p>	<form:input path="nome" class="form-control" id="nome" type="text" name="tNome" size="30" maxlength="30" required='required' /> </p>
+	            	     <p><form:input path="nome" class="form-control" id="nome" type="text" size="30" maxlength="30" required='required' /> </p>
 						</div>
 				
 					<label for="cTelefone" class="col-sm-2 form-control-label">Telefone:</label>    
 						<div class="col-sm-10"> 	
-						<p>	<form:input path="telefone" class="form-control" id="cTelefone" type="text" name="telefone" size="11" maxlength="14" placeholder="(00)00000-0000" onkeypress="return mascaraTEL(this,'(##)#####-####')" required='required' /> </p>
+						<p><form:input path="telefone" class="form-control" id="cTelefone" type="text" size="11" maxlength="14" placeholder="(00)00000-0000" onkeypress="return mascaraTEL(this,'(##)#####-####')" required='required' /> </p>
 						</div>
 				</div>
 				<div class="form-group" >                    
                     <label for="cEmail" class="col-sm-2 form-control-label">Email:</label> 
-                    	<div class="col-sm-10"> 
-                    	<p>	<form:input path="email" class="form-control" id="cEmail" type="email" name="email" size="30" placeholder="nome@example.com" required='required' /> </p>
-               	 		</div>
-               	 		<form:errors  path="cpf"></form:errors>	
-           	 		<label for="cCpf" class="col-sm-2 form-control-label">Cpf:</label>  
+                    <div class="col-sm-10"> 
+                    	<p><form:input path="email" class="form-control" id="cEmail" type="email" size="30" placeholder="nome@example.com" required='required' /> </p>
+               	 	</div>
+               	 	
+           	 		<label for="lcpf" class="col-sm-2 form-control-label">Cpf:</label>  
                     	<div class="col-sm-10"> 
                         	<p>		
-                        		<form:input path="cpf" class="form-control" id="cData" type="text" name="cpf" size="14" maxlength="14" required='required' />                	
+                        		<form:input path="cpf" class="form-control" id="lcpf" type="text" size="14" maxlength="14" required='required' /> 
+               	 				<form:errors  path="cpf"></form:errors>
                        		</p>               	 			
                	 		</div>
            	 		<label for="cSalario" class="col-sm-2 form-control-label">Salario:</label>  
 	                 	<div class="col-sm-10"> 
 	                     	<p>	       							
-	                     		<form:input path="salario" class="form-control" id="cSalario" type="number" step="0.01" name="salario" size="14" maxlength="14" required='required' />                	
+	                     		<form:input path="salario" class="form-control" id="cSalario" type="number" step="0.01" size="14" maxlength="14" required='required' />                	
                     		</p>               	 			
             	 		</div>
             	 	<label for="inputNome"  class="col-sm-2 form-control-label">Cargo</label>

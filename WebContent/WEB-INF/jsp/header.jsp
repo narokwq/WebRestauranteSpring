@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Restaurante</title>
+    <title>Cowboy Restaurante</title>
     <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap4.css" />">
     <link rel="stylesheet" href="<c:url value="/resources/css/mycss.css" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/cadastrocliente.css" />">

@@ -1,6 +1,6 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <div id="topo">
-        <span>Restaurante</span>
+        <h2 >Cowboy Restaurante</h2>
     </div >
     <nav class="navbar" id="topofixo">
         <ul class="nav navbar-nav nav-pills">
