@@ -99,3 +99,19 @@ textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { co
 
 input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder, 
 textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #888; }
+
+
+.centro-cadastro
+{
+	width: 1200px;
+	height: 100%;
+	margin: auto;
+	position: absolute;
+  	top: 0;
+  	left: 0;
+  	bottom: 0;
+  	right: 0;
+
+    padding: 1.5rem;
+    background-color: #341d35 !important;
+}

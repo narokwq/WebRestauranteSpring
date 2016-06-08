@@ -11,15 +11,15 @@
         <div class="centrodiv">
         	<c:url var="url" value="/delivery/adiciona" />
             <form:form action="${url}" modelAttribute="itemCardapio" method="post">            	
-                <div class="form-group row">
+                <div class="form-group row col-sm-10">
                     <label for="inputNome"  class="col-sm-1	 form-control-label">Produto</label>
-                 	<div class="col-sm-4" >
+                 	<div class="col-sm-1" >
                          <form:select id="cCardapio"  path="id" class="form-control" required="required" >
 								<form:options items="${cardapioItens}"/>
                     	 </form:select>
                     </div>
-                    <label for="inputQuantidade"   class="col-sm-2 form-control-label">Quantidade</label>
-                    <div class="col-sm-2">
+                    <label for="inputQuantidade"   class="col-sm-1 form-control-label">Quantidade</label>
+                    <div class="col-sm-1">
                         <form:input type="number" min="1" value="1" class="form-control" id="inputQuantidade" placeholder="00" path="qtd" required="required" />
                     </div>
                   	<div class="col-sm-offset-0 col-sm-2" >

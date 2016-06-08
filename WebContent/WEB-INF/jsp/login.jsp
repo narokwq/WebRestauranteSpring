@@ -41,14 +41,14 @@
 
 					<div class="col-sm-offset-1 col-sm-10">
 						<form:input path="login" type="text" class="form-control"
-							name="tLogin" placeholder="Login" required="required" />
+							placeholder="Login" required="required" autocomplete="off" />
 					</div>
 				</div>
 				<div class="form-group" style="margin-top: 15px;">
 
 					<div class="col-sm-offset-1 col-sm-10">
-						<form:password path="senha" class="form-control" name="tSenha"
-							placeholder="Senha" required="required" />
+						<form:password path="senha" class="form-control"
+							placeholder="Senha" required="required" autocomplete="off" />
 					</div>
 				</div>
 				<div class="form-group">
