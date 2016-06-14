@@ -36,4 +36,33 @@ public class PedidoDAO extends GenericDAO<Pedido>{
 		return query.getResultList();
 	}
 
+
+
+	public List<Pedido> buscarFiltro(Pedido filtro) {
+		String str = "select p from Pedido p where 1 = 1";
+		
+		if(filtro.hasValidId()){
+			str += " AND p.id = :id";
+		}
+		if(!filtro.getTipo().equals("Todos") && filtro.getTipo() != null){
+			str += " AND p.tipo = :tipo";
+		}
+		if(!filtro.getStatus().equals("Todos") && filtro.getStatus() != null){
+			str += " AND p.status = :status";
+		}
+		Query query=manager.createQuery(str);
+		
+		if(filtro.hasValidId()){
+			query.setParameter("id", filtro.getId());
+		}
+		if(!filtro.getTipo().equals("Todos") && filtro.getTipo() != null){
+			query.setParameter("tipo", filtro.getTipo());
+		}
+		if(!filtro.getStatus().equals("Todos") && filtro.getStatus() != null){
+			query.setParameter("status", filtro.getStatus());
+		}
+		
+		return query.getResultList();
+	}
+
 }

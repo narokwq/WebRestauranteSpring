@@ -33,7 +33,7 @@
     <context:annotation-config />    
     <mvc:annotation-driven />
     <mvc:default-servlet-handler />    
-    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
    
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />

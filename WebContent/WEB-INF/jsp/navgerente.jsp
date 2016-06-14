@@ -41,7 +41,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
                     <a class="dropdown-item" href="<c:url value="/pedido/listar" />">Listar Pedidos</a>
-                    <a class="dropdown-item" href="#">Tradicional</a>
+                    <%-- <a class="dropdown-item" href="<c:url value="/tradicional/form" />">Tradicional</a> --%>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -58,8 +58,8 @@
                     Reserva
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
-                <a class="dropdown-item" href="#">Cadastrar</a>          
-                <a class="dropdown-item" href="#">Listar</a>
+                <a class="dropdown-item" href="<c:url value="/reserva/form" />">Cadastrar</a>          
+                <a class="dropdown-item" href="<c:url value="/reserva/listar" />">Listar</a>
                 </div>
             </li>            
              <li class="nav-item dropdown">

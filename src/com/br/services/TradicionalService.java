@@ -24,16 +24,20 @@ public class TradicionalService {
 
 	public void criar(Tradicional pedido) throws Exception {
 		//		EntityManager  manager =  JPAUtil.getEntityManager();
+		
+		if(pedido.getFuncionario() == null || pedido.getMesa() == null){
+			throw new Exception("Pedido não tem Funcionario ou Mesa");
+		}		
+		pedido.setData(new Date());
+		pedidoDAO.insert(pedido);
+		
 		for(ItemCardapio itemCardapio:pedido.getItensCardapio()){
 			if(itemCardapio.getCardapio() == null ){
 				throw new Exception("Item sem cardápio");
 			}
+			itemCardapio.setPedido(pedido);
 			ItemCardapioDAO.insert(itemCardapio);
 		}
-		if(pedido.getFuncionario() == null || pedido.getMesa() == null){
-			throw new Exception("Pedido não tem Funcionario ou Mesa");
-		}		
-		pedidoDAO.insert(pedido);
 	}
 
 	public void atualizar(Tradicional pedido) throws Exception {			

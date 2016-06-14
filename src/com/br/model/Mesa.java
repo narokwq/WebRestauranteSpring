@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name="Mesa")
 public class Mesa implements EntityClass{
@@ -11,7 +14,9 @@ public class Mesa implements EntityClass{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private int numero;
+	@NotEmpty(message="Preencha descricao")
 	private String descricao;
+	@Min(value=2, message="Minimo 2 lugares")
 	private int capacidade;
 	private Boolean perReserva;
 	

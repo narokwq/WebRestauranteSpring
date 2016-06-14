@@ -17,7 +17,6 @@ public class Cardapio implements EntityClass {
 	private Long id;
 	@NotEmpty(message = "Nome não pode ser vazio.")
 	private String nome;
-	@NotEmpty(message = "Preco não pode ser vazio.")
 	private float preco;
 	private boolean status;
 

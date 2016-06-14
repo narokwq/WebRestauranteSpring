@@ -63,28 +63,22 @@
 					<td>${pedidos.status}</td>
 					
 					<td>
-						<c:if test="${empty pedidos.funcionario}">
-							<c:if test="${pedidos['class'].simpleName == 'Delivery'}">
+						
+							<c:if test="${pedidos.tipo eq 'Delivery'}">
 								<c:catch var="e">
 									<c:out value="${pedidos.cliente.nome}"></c:out>
 								</c:catch>
 							</c:if>
-							<c:if test="${pedidos['class'].simpleName == 'Tradicional'}">
+							<c:if test="${pedidos.tipo eq 'Tradicional'}">
+
 								<c:catch var="e">
 									<c:out value="${pedidos.mesa.descricao}"></c:out>
 								</c:catch>
 							</c:if>
-							
-						</c:if>
-						<c:if test="${!empty pedidos.funcionario}">
-							<c:catch var="e">
-								<c:out value="${pedidos.funcionario.nome}"></c:out>
-							</c:catch>
-						</c:if>
-					</td>					
+					</td>				
 					<td>${pedidos.funcionario.nome}</td>
 					<td>
-						<c:out value="${pedidos['class'].simpleName}" />
+						<c:out value="${pedidos.tipo}" />
 						<%-- <c:if test="${empty pedidos.funcionario}">
 							<c:out value="Delivery"></c:out>
 						</c:if>

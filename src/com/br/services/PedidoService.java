@@ -36,19 +36,16 @@ public class PedidoService {
 		return result;
 	}
 
-	@SuppressWarnings({ "unchecked", "unused" })
+
 	public List<Pedido> buscarFiltro(Pedido filtro) {
 		List<Pedido> result = Collections.emptyList();
-		if (filtro.getTipo().equals("Tradicional")) {
-			return result = (List<Pedido>) (List<?>) tradicionalDAO.getAll();
-		}
-		if (filtro.getTipo().equals("Delivery")) {
-			return result = (List<Pedido>) (List<?>) deliveryDAO.getAll();
-		}
-		if (filtro.getId() != null) {
-			return result = pedidoDAO.getById(filtro);
-		}
+		result = pedidoDAO.buscarFiltro(filtro);
+		
+		return result;
+	}
 
-		return result = pedidoDAO.getAll();
+	public void atualizar(Pedido pedido) {
+		pedidoDAO.update(pedido);
+		
 	}
 }

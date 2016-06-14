@@ -35,5 +35,12 @@ public class MesaDAO extends GenericDAO<Mesa>{
 		}
 		return query.getResultList();
 	}
+
+	public List<Mesa> getAllReserva() {
+		String str = "select m from Mesa m where m.perReserva is :perReserva";
+		Query query= manager.createQuery(str).setParameter("perReserva", true);
+		
+		return query.getResultList();
+	}
 	
 }

@@ -44,6 +44,13 @@ public class MesaService {
 		return result;
 	}
 	
+	public  List<Mesa> listarReserva(){
+		List<Mesa> result = Collections.emptyList();
+		result = mesaDAO.getAllReserva();
+
+		return result;
+	}
+	
 	public  List<Mesa> buscarFiltro(Mesa filtro){
 		List<Mesa> mesas = new ArrayList<Mesa>();
 		mesas = mesaDAO.buscarFiltro(filtro);

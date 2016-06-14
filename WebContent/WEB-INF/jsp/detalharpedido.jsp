@@ -11,8 +11,11 @@
         	<div class="form-group row negrito">
         		 <div class="col-sm-3">Numero: <c:out value="${pedido.id}"/></div>
         		 <div class="col-sm-3">Status: <c:out value="${pedido.status}"/></div>
-        		 <div class="col-sm-3">Tipo: <c:out value="${pedido['class'].simpleName}"/></div>
-        		 <div class="col-sm-3">Troco para: <c:catch var="e"><c:out value="${pedido.troco}"/></c:catch></div>
+        		 <div class="col-sm-3">Tipo: <c:out value="${pedido.tipo}"/></div>
+        		 <div class="col-sm-3">
+        		 	<c:if test="${pedido.tipo eq 'Delivery'}">Troco para: <c:out value="${pedido.troco}"/></c:if>
+        		 	<c:if test="${pedido.tipo eq 'Tradicional'}">Mesa: <c:out value="${pedido.mesa.descricao}"/></c:if>
+        		 </div>
         	</div>
             <table class="table table-sm">
 	            <thead>
@@ -38,16 +41,10 @@
                
                 <div class="form-group row" style="margin-top: 30px;">
 	                <div class=" col-sm-2" >
-	                	<a href="" style="margin:auto;" class="btn btn-secondary">Em Espera</a>
+	                	<a href="atender" style="margin:auto;" class="btn btn-secondary">Atender</a>
 	                </div> 
 	                <div class="col-sm-2" >
-	                	<a href="" style="margin-left:8px;" class="btn btn-secondary">Atendido</a>
-	                </div> 
-	                <div class="col-sm-2" >
-	                	<a href="" style="margin:auto;" class="btn btn-secondary">Concluido</a>
-	                </div> 
-	                <div class="col-sm-2" >
-	                	<a href="" style="margin:auto;" class="btn btn-secondary">Cancelar</a>
+	                	<a href="cancelar" style="margin:auto;" class="btn btn-secondary">Cancelar</a>
 	                </div> 
 	                <div class="col-sm-offset-2 col-sm-2" >
 	                	<a href="javascript:history.back();" style="float:right;" class="btn btn-secondary ">Voltar</a>

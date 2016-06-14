@@ -32,7 +32,6 @@ public class PedidoController {
 		Collections.sort(pedidos);
 		map.addAttribute("pedidos", pedidos);
 		map.addAttribute("filtro", new Pedido());
-		
 		return "listarpedidos";
 	}
 	
@@ -46,42 +45,32 @@ public class PedidoController {
 		
 	@RequestMapping(value="filtrar", method=RequestMethod.GET)
 	public String filtrar(@ModelAttribute("filtro") Pedido filtro, ModelMap map, HttpSession session){
-		//filtro.setCliente((Cliente)session.getAttribute("usuario"));
-		System.out.println(filtro.getStatus());
 		List<Pedido> pedidos = pedidoService.buscarFiltro(filtro);
 		Collections.sort(pedidos);
 		map.addAttribute("pedidos", pedidos);
 		map.addAttribute("filtro", filtro);
 		return "listarpedidos";
 	}
-	/*
+
 	@RequestMapping(method=RequestMethod.GET, value="{id}/cancelar")
-	public String cancelarDelivery(@PathVariable Long id, ModelMap map) throws Exception{
-		Delivery delivery = deliveryService.procurar(new Delivery(id));
-		if(delivery.getStatus().equals("Pendente")){
-			delivery.setStatus("Cancelado");
-			deliveryService.atualizar(delivery);
+	public String cancelarPedido(@PathVariable Long id, ModelMap map) throws Exception{
+		Pedido pedido = pedidoService.procurar(new Pedido(id));
+		if(pedido.getStatus().equals("Pendente")){
+			pedido.setStatus("Cancelado");
+			pedidoService.atualizar(pedido);
 		}
-		return "redirect:/delivery/listar";
+		return "redirect:/pedido/listar";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="save")
-	public String save(@RequestParam("pagamento") Float troco, HttpSession session) throws Exception{
-		
-		Delivery delivery = getItensSession(session);
-		if(troco < delivery.getTotal()){
-			return "redirect:/delivery/form";
+	@RequestMapping(method=RequestMethod.GET, value="{id}/atender")
+	public String atenderPedido(@PathVariable Long id, ModelMap map) throws Exception{
+		Pedido pedido = pedidoService.procurar(new Pedido(id));
+		if(pedido.getStatus().equals("Pendente")){
+			pedido.setStatus("Atendido");
+			pedidoService.atualizar(pedido);
 		}
-		if(!delivery.getItensCardapio().isEmpty()){
-			delivery.setCliente((Cliente)session.getAttribute("usuario"));
-			delivery.setTroco(troco-delivery.getTotal());
-			deliveryService.criar(delivery);
-			setItensSession(session, new Delivery());
-		}
-		
-		
-		return "redirect:/delivery/listar";
-	}*/
+		return "redirect:/pedido/listar";
+	}
 	
 	
 

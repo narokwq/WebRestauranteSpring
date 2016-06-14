@@ -131,3 +131,7 @@ code {
 .negrito .col-sm-3 {
 	font-weight: bold;
 }
+
+.erros{
+	color:red;
+}

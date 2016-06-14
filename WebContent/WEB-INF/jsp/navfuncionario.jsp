@@ -43,6 +43,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
                     <a class="dropdown-item" href="<c:url value="/pedido/listar" />">Listar Pedidos</a>
+                    <a class="dropdown-item" href="<c:url value="/tradicional/form" />">Tradicional</a>
                 </div>
             </li>
          

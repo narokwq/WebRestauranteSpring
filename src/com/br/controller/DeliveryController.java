@@ -120,7 +120,9 @@ public class DeliveryController {
 		if (!delivery.getItensCardapio().isEmpty()) {
 			delivery.setCliente((Cliente) session.getAttribute("usuario"));
 			delivery.setTroco(troco);
+			delivery.setTipo("Delivery");
 			deliveryService.criar(delivery);
+			
 			setItensSession(session, new Delivery());
 		}
 		return "redirect:/delivery/listar";

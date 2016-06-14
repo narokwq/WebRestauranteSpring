@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity(name="Reserva")
 public class Reserva implements EntityClass{
 	
@@ -18,15 +21,19 @@ public class Reserva implements EntityClass{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
 	private Date dataInicio;
+	
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
 	private Date dataFim;
-	private int nPessoas;			
+	private int nPessoas;	
+	@NotEmpty(message="Digite um nome")
 	private	String nomeResp;  		
 	
 	@ManyToOne
 	@JoinColumn(name="fun_id")
-	private Funcionario funcionario;
+	private Usuario funcionario;
 	
 	@ManyToOne
 	@JoinColumn(name="mesa_id")
@@ -56,11 +63,11 @@ public class Reserva implements EntityClass{
 		this.nomeResp = nomeResp;
 	}
 
-	public Funcionario getFuncionario() {
+	public Usuario getFuncionario() {
 		return funcionario;
 	}
 
-	public void setFuncionario(Funcionario funcionario) {
+	public void setFuncionario(Usuario funcionario) {
 		this.funcionario = funcionario;
 	}
 
@@ -86,6 +93,10 @@ public class Reserva implements EntityClass{
 
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
+	}
+
+	public boolean hasValidId(){
+		return getId() != null && getId() != 0;
 	}
 	
 	

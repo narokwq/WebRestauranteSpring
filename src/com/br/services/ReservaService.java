@@ -1,5 +1,6 @@
 package com.br.services;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.br.dao.ReservaDAO;
+import com.br.model.Cliente;
+import com.br.model.Mesa;
 import com.br.model.Reserva;
 
 @Service
@@ -22,15 +25,23 @@ public class ReservaService {
 		if(reserva.getMesa() == null || reserva.getFuncionario() == null){
 			throw new Exception("Reserva sem mesa ou funcionario responsavel");
 		}
-			
-		reservaDAO.insert(reserva);
+		if(reservaDAO.checkSave(reserva))
+			reservaDAO.insert(reserva);
+		else{
+			throw new Exception("Mesa ocupada nesse horario");
+		}
+		
 	}
 	
 	public void atualizar(Reserva reserva) throws Exception {
 		if(reserva.getMesa() == null || reserva.getFuncionario() == null){
 			throw new Exception("Reserva sem mesa ou funcionario responsavel");
 		}
-		reservaDAO.update(reserva);
+		if(reservaDAO.checkSave(reserva))
+			reservaDAO.update(reserva);
+		else{
+			throw new Exception("Mesa ja tem reserva nesse horario");
+		}
 	}
 	
 	public void remover(Reserva reserva) {			
@@ -49,5 +60,11 @@ public class ReservaService {
 		result = reservaDAO.getAll();
 
 		return result;
+	}
+
+	public List<Reserva> buscarFiltro(Reserva filtro) {
+		List<Reserva> reserva = new ArrayList<Reserva>();
+		reserva = reservaDAO.buscar(filtro);
+		return reserva;
 	}
 }

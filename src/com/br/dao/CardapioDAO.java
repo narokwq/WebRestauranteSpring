@@ -25,7 +25,7 @@ public class CardapioDAO extends GenericDAO<Cardapio>{
 
 	@SuppressWarnings("unchecked")
 	public List<Cardapio> buscar(Cardapio filtro){
-		String str = "select c from Cardapio c where upper(nome) like upper(:nome)";
+		String str = "select c from Cardapio c where upper(c.nome) like upper(:nome)";
 		Long id = filtro.getCategoria().getId();
 		if(filtro.getNome() == null){
 			filtro.setNome("");

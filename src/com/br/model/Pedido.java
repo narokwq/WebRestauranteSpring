@@ -39,7 +39,6 @@ public class Pedido implements EntityClass, Comparable<Pedido>{
 	@OneToMany(mappedBy="pedido", fetch=FetchType.EAGER)   
 	private List<ItemCardapio> itensCardapio = new ArrayList<>();
 	
-	@Transient
 	private String tipo;
 	
 	public Pedido() {
@@ -125,7 +124,10 @@ public class Pedido implements EntityClass, Comparable<Pedido>{
 	public int compareTo(Pedido o) {
 		return o.getId() < getId() ? -1:1;
 	}
-
+	
+	public boolean hasValidId(){
+		return getId() != null && getId() != 0;
+	}
 }
 
 
