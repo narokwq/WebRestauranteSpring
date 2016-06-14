@@ -19,14 +19,14 @@ public class MesaDAO extends GenericDAO<Mesa>{
 	
 	@SuppressWarnings("unchecked")
 	public List<Mesa> buscarFiltro(Mesa filtro){
-		String str = "select m from Mesa m where upper(m.descricao) like upper(:descricao)";
+		String str = "select m from Mesa m where upper(m.descricao) like upper(:descricao) AND m.status is :status";
 		if(filtro.getDescricao() == null){
 			filtro.setDescricao("");
 		}
 		if(filtro.isPerReserva() != null){
 			str+=" and m.perReserva is :perReserva";
 		}
-		Query query=manager.createQuery(str);   
+		Query query=manager.createQuery(str).setParameter("status", false);   
 		
 		query.setParameter("descricao", "%"+filtro.getDescricao()+"%");
 		
@@ -37,9 +37,15 @@ public class MesaDAO extends GenericDAO<Mesa>{
 	}
 
 	public List<Mesa> getAllReserva() {
-		String str = "select m from Mesa m where m.perReserva is :perReserva";
-		Query query= manager.createQuery(str).setParameter("perReserva", true);
+		String str = "select m from Mesa m where m.perReserva is :perReserva AND m.status is :status";
+		Query query= manager.createQuery(str).setParameter("perReserva", true).setParameter("status", false);
 		
+		return query.getResultList();
+	}
+
+	public List<Mesa> buscarAtivo() {
+		String str = "select m from Mesa m where m.status is :status";
+		Query query= manager.createQuery(str).setParameter("status", false);
 		return query.getResultList();
 	}
 	

@@ -62,6 +62,7 @@ public class Cliente extends Usuario {
 		this.dataNasc = dataNasc;
 	}
 
+	@Override
 	public String toString() {
 		return String.format("Nome: %s\nCliente desde: %s\nData de Nascimento: %s\n\t -- Endereço --\n %s", getNome(),
 				this.dataCadastro, this.dataNasc, this.endereco);
@@ -75,6 +76,7 @@ public class Cliente extends Usuario {
 		this.deliverys = deliverys;
 	}
 
+	@Override
 	public int compareTo(Usuario user) {
 		int valor = 0;
 		if (user instanceof Cliente) {

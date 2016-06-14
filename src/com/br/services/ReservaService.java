@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.br.dao.ReservaDAO;
-import com.br.model.Cliente;
-import com.br.model.Mesa;
 import com.br.model.Reserva;
 
 @Service

@@ -19,7 +19,10 @@ public class Mesa implements EntityClass{
 	@Min(value=2, message="Minimo 2 lugares")
 	private int capacidade;
 	private Boolean perReserva;
+	private boolean status;
 	
+	
+
 	public Mesa() {
 		
 	}
@@ -27,9 +30,11 @@ public class Mesa implements EntityClass{
 	public Mesa(Long id) {
 		this.id = id;
 	}
+	@Override
 	public Long getId() {
 		return id;
 	}
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -60,6 +65,14 @@ public class Mesa implements EntityClass{
 
 	public String getDescricao() {
 		return descricao;
+	}
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	public void setDescricao(String descricao) {

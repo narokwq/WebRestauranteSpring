@@ -27,6 +27,7 @@ public class Delivery extends Pedido{
 	public void setTroco(float troco) {
 		this.troco = troco;
 	}
+	@Override
 	public String toString(){
 		return String.format("Troco: %f", this.troco);
 	}

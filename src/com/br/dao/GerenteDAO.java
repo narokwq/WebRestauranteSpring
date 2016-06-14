@@ -1,6 +1,5 @@
 package com.br.dao;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;

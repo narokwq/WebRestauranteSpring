@@ -3,7 +3,6 @@ package com.br.dao;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
@@ -42,13 +41,13 @@ public class DeliveryDAO extends GenericDAO<Delivery>{
 	public List<Delivery> procurarPorStatus(Long id, String status) {
 		Query result = null;
 		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.cliente.id = :id and d.status = :status and d.desativado = :desativado").setParameter("id", id).setParameter("status", status);
-		return (List<Delivery>) result.getResultList();
+		return result.getResultList();
 	}
 	@SuppressWarnings("unchecked")
 	public List<Delivery> procurarPorStatus(String status) {
 		Query result = null;
 		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.status = :status ORDER BY d.id ASC").setParameter("status", status);
-		return (List<Delivery>) result.getResultList();
+		return result.getResultList();
 	}
 	
 	public List<Delivery> buscarFiltro(Delivery filtro){

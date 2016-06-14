@@ -3,7 +3,6 @@ package com.br.dao;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
@@ -35,7 +34,7 @@ public class TradicionalDAO extends GenericDAO<Tradicional> {
 	public List<Tradicional> procurarPorStatus(String status) {
 		Query result = null;
 		result = manager.createQuery("SELECT t FROM Tradicional t WHERE t.status = :status ORDER BY t.id ASC").setParameter("status", status);
-		return (List<Tradicional>) result.getResultList();
+		return result.getResultList();
 	};
 	
 }

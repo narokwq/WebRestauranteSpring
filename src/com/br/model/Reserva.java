@@ -39,10 +39,12 @@ public class Reserva implements EntityClass{
 	@JoinColumn(name="mesa_id")
 	private Mesa mesa;
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.br.model.Cargo;
 import com.br.model.Funcionario;
+import com.br.model.Mesa;
 import com.br.services.CargoService;
 import com.br.services.FuncionarioService;
 
@@ -47,7 +48,16 @@ public class FuncionarioController {
 		map.addAttribute("cargos");
 		return "cadastrofuncionario";
 	}
+	
+	@RequestMapping(value = "filtrar", method = RequestMethod.GET)
+	public String filtrar(@ModelAttribute("filtro") Funcionario filtro, ModelMap map) {
 
+		List<Funcionario> funcionarios = funcionarioService.buscarFiltro(filtro);
+		map.addAttribute("funcionarios", funcionarios);
+		map.addAttribute("filtro", filtro);
+		return "listarfuncionario";
+	}
+	
 	@RequestMapping(method = RequestMethod.GET, value = "{id}/form")
 	public String updateForm(@PathVariable Long id, ModelMap map) {	
 		Funcionario funcionario = funcionarioService.procurar(new Funcionario(id));

@@ -16,7 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -77,9 +76,11 @@ public class Pedido implements EntityClass, Comparable<Pedido>{
 		return totalResult;
 	}
 	
+	@Override
 	public Long getId() {
 		return id;
 	}
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

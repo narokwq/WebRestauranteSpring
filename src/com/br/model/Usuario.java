@@ -26,14 +26,17 @@ public class Usuario implements EntityClass, Comparable<Usuario>{
 	@Column(nullable=true)
 	private boolean desativado;
 	
+	@Override
 	public int compareTo(Usuario user) {
 		return this.getNome().compareTo(user.getNome());
 	}
 	
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

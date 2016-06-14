@@ -27,7 +27,13 @@ public class MesaService {
 	}
 	
 	public void remover(Mesa mesa) {
-		mesaDAO.delete(mesa);
+		try {
+			mesaDAO.delete(mesa);
+		} catch (Exception e) {
+			mesa.setStatus(true);
+			atualizar(mesa);
+		}
+		
 	}
 	
 	public   Mesa procurar(Mesa mesa) {
@@ -39,7 +45,15 @@ public class MesaService {
 	
 	public  List<Mesa> listar(){
 		List<Mesa> result = Collections.emptyList();
-		result = mesaDAO.getAll();
+//		result = mesaDAO.getAll();
+		result = listarAtivo();
+
+		return result;
+	}
+	
+	public  List<Mesa> listarAtivo(){
+		List<Mesa> result = Collections.emptyList();
+		result = mesaDAO.buscarAtivo();
 
 		return result;
 	}

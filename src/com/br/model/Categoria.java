@@ -20,9 +20,11 @@ public class Categoria implements EntityClass, Comparable<Categoria>{
 	public Categoria(Long id) {
 		this.id = id;
 	}
+	@Override
 	public Long getId() {
 		return id;
 	}
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

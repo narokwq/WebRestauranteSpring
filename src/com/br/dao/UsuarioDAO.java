@@ -2,8 +2,6 @@ package com.br.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
@@ -15,6 +13,7 @@ import com.br.model.Usuario;
 public class UsuarioDAO extends GenericDAO<Usuario>{
 
 
+	@Override
 	public Class<Usuario> getClassType() {
 		return Usuario.class;
 	}

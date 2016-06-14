@@ -58,7 +58,7 @@
 					</td>
 					<td>
 						<a href="<c:url value="/mesa/${mesa.id}/form" />"><img src="<c:url value="../resources/image/edit.png" />" class="icon-tb"></a> 
-						<a href="/mesa/${mesa.id}/form"><img src="<c:url value="../resources/image/delete.png" />" class="icon-tb"></a>
+						<a href="<c:url value="/mesa/${mesa.id}/remove" />"><img src="<c:url value="../resources/image/delete.png" />" class="icon-tb"></a>
 					</td>
 	
 	            </tr>

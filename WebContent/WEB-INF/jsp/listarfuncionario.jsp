@@ -9,18 +9,19 @@
 <%@ include file="header.jsp" %>
 	<section>
 		<div class="centrodiv">
-			<form action="ListarPedidos">
+			<c:url var="url" value="/funcionario/filtrar"/>
+			<form:form action="${url}" modelAttribute="filtro" method="get">
 				<div class="form-group row">
 				
 						<label for="inputNome" class="col-sm-1 form-control-label">Nome</label>
 	                    <div class="col-sm-4 col-sm-offset-0">
-	                        <input type="text" class="form-control" placeholder="" >
+	                        <form:input path="nome" class="form-control" placeholder="Nome do funcionario" />
 	                    </div>
 	                    <div class="col-sm-offset-0 col-sm-6" >
 	                        <button style="float:right;" type="submit" class="btn btn-secondary">Pesquisar</button>
 	                    </div>
 				</div>
-			</form>
+			</form:form>
 			<div class="form-group row">
 	 		<table class="table table-sm">
 	            <thead>

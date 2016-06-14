@@ -62,6 +62,7 @@ public class Endereco {
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
+	@Override
 	public String toString(){
 		return String.format("Rua: %s\t%s\tComplemento: %s\nBairro: %s\nCEP: %s\nCidade: %s\nEstado: %s\nPais: %s", this.logradouro,this.numero,this.complemento,this.bairro,
 				this.cep,this.cidade,this.estado,this.pais);

@@ -26,7 +26,7 @@ public class MesaController {
 	@RequestMapping(value = "listar", method = RequestMethod.GET)
 	public String list(ModelMap map) {
 
-		List<Mesa> mesas = mesaService.listar();
+		List<Mesa> mesas = mesaService.listarAtivo();
 		map.addAttribute("mesas", mesas);
 		map.addAttribute("filtro", new Mesa());
 		map.addAttribute("reservaOpcao");
@@ -79,7 +79,7 @@ public class MesaController {
 
 		Map<Long, String> mesas = new HashMap<>();
 
-		for (Mesa mesa : mesaService.listar()) {
+		for (Mesa mesa : mesaService.listarAtivo()) {
 			mesas.put(mesa.getId(), mesa.getDescricao());
 		}
 		return mesas;
